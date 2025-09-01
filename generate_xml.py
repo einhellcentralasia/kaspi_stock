@@ -6,26 +6,14 @@ Generate Kaspi autoload XML from a SINGLE Excel table via Microsoft Graph (Appli
 - Pulls ONLY the named table (SP_TABLE_NAME) from SP_XLSX_PATH on SharePoint.
 - Hard-fails if headers ≠ ["SKU","Model","In_transit","Total_preorders","Stock","RSP"] in this exact order.
 - Writes docs/price.xml for GitHub Pages.
-
-Env (GitHub Secrets):
-  TENANT_ID, CLIENT_ID, CLIENT_SECRET
-  SP_SITE_HOSTNAME            e.g., bavatools.sharepoint.com
-  SP_SITE_PATH                e.g., /sites/einhell_common
-  SP_XLSX_PATH                e.g., /Shared Documents/General/_system_files/TREF_file.xlsx
-  SP_TABLE_NAME               e.g., tref_table
-  COMPANY_NAME                e.g., TREF
-  MERCHANT_ID                 e.g., 30332726
-  KASPI_STORE_ID              e.g., PP1
-Optional:
-  DEFAULT_PREORDER_DAYS       e.g., 3
 """
 
-import os, sys, json, logging, io
+import os, sys, logging
 from datetime import datetime
 from typing import List, Tuple
 from urllib.parse import quote
 
-# ---- Error handling & logging (at the very beginning) ----
+# ---- Error handling & logging ----
 try:
     import requests
     from lxml import etree
@@ -40,6 +28,8 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(
 # ----------- Config helpers -----------
 def env(name: str, required: bool = True, default: str = None) -> str:
     val = os.getenv(name, default)
+    if val is not None:
+        val = val.strip()  # trim accidental spaces/newlines
     if required and (val is None or val == ""):
         raise RuntimeError(f"Missing required env var: {name}")
     return val
@@ -61,7 +51,6 @@ DEFAULT_PREORDER_DAYS = int(os.getenv("DEFAULT_PREORDER_DAYS", "3"))
 
 GRAPH_BASE = "https://graph.microsoft.com/v1.0"
 GRAPH_SCOPE = ["https://graph.microsoft.com/.default"]
-
 EXPECTED_HEADERS = ["SKU","Model","In_transit","Total_preorders","Stock","RSP"]
 
 # ----------- Graph auth -----------
@@ -89,7 +78,6 @@ def resolve_site_id(token: str) -> str:
     return data["id"]
 
 def resolve_item_id(site_id: str, token: str) -> str:
-    # Ensure path is URL-encoded but slashes preserved
     path_enc = quote(SP_XLSX_PATH, safe="/:+()%!$&',;=@")
     url = f"{GRAPH_BASE}/sites/{site_id}/drive/root:{path_enc}"
     data = gget(url, token)
@@ -97,19 +85,13 @@ def resolve_item_id(site_id: str, token: str) -> str:
 
 # ----------- Read ONLY the named table -----------
 def read_table_values(site_id: str, item_id: str, token: str) -> Tuple[List[str], List[List]]:
-    # Table name may need quoting if it contains spaces; encode safely
     table_seg = quote(SP_TABLE_NAME, safe="")
     base = f"{GRAPH_BASE}/sites/{site_id}/drive/items/{item_id}/workbook/tables/{table_seg}"
-
-    # Get header row
     hdr = gget(f"{base}/headerRowRange", token)
     headers = hdr.get("values", [[]])[0] if hdr.get("values") else []
     headers = [str(h).strip() for h in headers]
-
-    # Get body (can be empty)
     body = gget(f"{base}/dataBodyRange", token)
     rows = body.get("values", []) or []
-
     return headers, rows
 
 def validate_headers(headers: List[str]):
@@ -123,8 +105,6 @@ def validate_headers(headers: List[str]):
 
 def to_dataframe(headers: List[str], rows: List[List]) -> pd.DataFrame:
     df = pd.DataFrame(rows, columns=headers)
-
-    # Normalize
     df["SKU"] = df["SKU"].astype(str).str.strip()
     df["Model"] = df["Model"].astype(str).str.strip()
     for col in ["In_transit","Total_preorders","Stock"]:
@@ -141,18 +121,15 @@ def build_kaspi_xml(df: pd.DataFrame) -> bytes:
     etree.SubElement(root, "company").text = str(COMPANY_NAME)
     etree.SubElement(root, "merchantid").text = str(MERCHANT_ID)
     offers = etree.SubElement(root, "offers")
-
     for _, r in df.iterrows():
         sku, model = str(r["SKU"]), str(r["Model"])
         stock = int(r["Stock"])
         in_transit = int(r["In_transit"])
         preorders = int(r["Total_preorders"])
         price = float(r["RSP"])
-
         offer = etree.SubElement(offers, "offer", sku=sku)
         etree.SubElement(offer, "model").text = model
         etree.SubElement(offer, "price").text = f"{price:.2f}"
-
         avs = etree.SubElement(offer, "availabilities")
         available_flag = "yes" if stock > 0 else "no"
         etree.SubElement(
@@ -161,10 +138,8 @@ def build_kaspi_xml(df: pd.DataFrame) -> bytes:
             storeId=str(KASPI_STORE_ID),
             stockCount=str(max(stock, 0))
         )
-
         if stock <= 0 and (in_transit > 0 or preorders > 0):
             etree.SubElement(offer, "preOrder").text = str(DEFAULT_PREORDER_DAYS)
-
     return etree.tostring(root, xml_declaration=True, encoding="UTF-8", pretty_print=True)
 
 # ----------- Write output -----------
@@ -178,27 +153,19 @@ def main() -> int:
     try:
         token = get_token()
         logging.info("Auth OK (Graph).")
-
         site_id = resolve_site_id(token)
         logging.info(f"Resolved site id: {site_id}")
-
         item_id = resolve_item_id(site_id, token)
         logging.info(f"Resolved item id: {item_id}")
-
         headers, rows = read_table_values(site_id, item_id, token)
         logging.info(f"Read table '{SP_TABLE_NAME}': {len(rows)} rows")
-
         validate_headers(headers)
-
         df = to_dataframe(headers, rows)
         logging.info(f"Dataframe rows after normalization: {len(df)}")
-
         xml_bytes = build_kaspi_xml(df)
         write_xml(xml_bytes)
-
         print("=== SUCCESS: docs/price.xml generated (Kaspi autoload feed) ===")
         return 0
-
     except Exception as e:
         logging.exception("Run failed")
         print(f"ERROR: {e}", file=sys.stderr)
