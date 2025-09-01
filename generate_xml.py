@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 """
-Generate Kaspi autoload XML from a SINGLE Excel table via Microsoft Graph (Application permissions).
-- Auth via CLIENT_ID/SECRET (app permissions).
-- Resolves site + file robustly (path OR search fallback).
-- Reads ONLY the named table, strict header schema.
-- Produces docs/price.xml.
+Kaspi XML from ONE Excel table via Microsoft Graph (Application permissions).
+- Auth with CLIENT_ID/SECRET.
+- Robust file resolve: tries provided path, "Documents" variant, and search().
+- Reads ONLY SP_TABLE_NAME, strict header schema.
+- Writes docs/price.xml.
 """
 
 import os, sys, logging
@@ -40,9 +40,9 @@ CLIENT_ID   = env("CLIENT_ID")
 CLIENT_SECRET = env("CLIENT_SECRET")
 
 SP_SITE_HOSTNAME = env("SP_SITE_HOSTNAME")
-SP_SITE_PATH     = env("SP_SITE_PATH")         # e.g. /sites/einhell_common
-SP_XLSX_PATH     = env("SP_XLSX_PATH")         # e.g. /Shared Documents/General/_system_files/TREF_file.xlsx
-SP_TABLE_NAME    = env("SP_TABLE_NAME")        # e.g. tref_table
+SP_SITE_PATH     = env("SP_SITE_PATH")         # /sites/einhell_common
+SP_XLSX_PATH     = env("SP_XLSX_PATH")         # /Shared Documents/General/_system_files/tref_file.xlsx
+SP_TABLE_NAME    = env("SP_TABLE_NAME")        # tref_table
 
 COMPANY_NAME   = env("COMPANY_NAME")
 MERCHANT_ID    = env("MERCHANT_ID")
@@ -82,11 +82,9 @@ def resolve_site_id(token: str) -> str:
     return data["id"]
 
 def try_item_by_path(site_id: str, path: str, token: str):
-    # URL-encode but keep slashes; allow special chars common in SP names
     path_enc = quote(path, safe="/:+()%!$&',;=@")
     url = f"{GRAPH_BASE}/sites/{site_id}/drive/root:{path_enc}"
-    r = gget_raw(url, token)
-    return r
+    return gget_raw(url, token)
 
 def search_item(site_id: str, filename: str, token: str):
     q = quote(filename, safe="")
@@ -94,40 +92,64 @@ def search_item(site_id: str, filename: str, token: str):
     data = gget(url, token)
     return data.get("value", [])
 
+def _folder_variants(folder_hint: str) -> List[str]:
+    # Accept all three common shapes
+    variants = {folder_hint}
+    variants.add(folder_hint.replace("/Shared Documents", "/Documents", 1))
+    # Also allow “root-relative” shape (no library segment)
+    if folder_hint.startswith("/Shared Documents/"):
+        variants.add(folder_hint.replace("/Shared Documents/", "/", 1).rstrip("/"))
+    if folder_hint.startswith("/Documents/"):
+        variants.add(folder_hint.replace("/Documents/", "/", 1).rstrip("/"))
+    return list(variants)
+
 def resolve_item_id(site_id: str, token: str) -> str:
-    # 1) Try the provided path
+    # 1) direct path tries
     tried = []
     for candidate in [
-        SP_XLSX_PATH,
-        SP_XLSX_PATH.replace("/Shared Documents", "/Documents", 1),  # some tenants expose "Documents"
+        SP_XLSX_PATH,                                        # as provided
+        SP_XLSX_PATH.replace("/Shared Documents", "/Documents", 1),
+        SP_XLSX_PATH.replace("/Documents", "/Shared Documents", 1),
+        # try without library name (root of drive is "Documents")
+        SP_XLSX_PATH.replace("/Shared Documents", "", 1) if SP_XLSX_PATH.startswith("/Shared Documents/") else SP_XLSX_PATH,
+        SP_XLSX_PATH.replace("/Documents", "", 1) if SP_XLSX_PATH.startswith("/Documents/") else SP_XLSX_PATH,
     ]:
+        candidate = candidate if candidate.startswith("/") else ("/" + candidate)
         r = try_item_by_path(site_id, candidate, token)
         tried.append((candidate, r.status_code))
         if r.status_code < 400:
+            logging.info(f"Resolved by path: {candidate}")
             return r.json()["id"]
 
-    # 2) Fall back to searching by file name
+    # 2) fallback: search by name, then pick the one whose parent path matches any variant
     filename = os.path.basename(unquote(SP_XLSX_PATH))
     folder_hint = os.path.dirname(unquote(SP_XLSX_PATH)).replace("\\", "/")
+    variants = _folder_variants(folder_hint)
     results = search_item(site_id, filename, token)
 
-    # Pick the result whose parent path matches our folder (best-effort)
+    # Prefer exact folder match (any variant), else first exact name
     for it in results:
-        # item['parentReference']['path'] like: /drive/root:/Shared Documents/General/_system_files
         parent_path = it.get("parentReference", {}).get("path", "")
-        if parent_path.endswith(folder_hint) or folder_hint in parent_path:
-            logging.info(f"Resolved by search: {it.get('name')} [{it.get('id')}] @ {parent_path}")
-            return it["id"]
+        for v in variants:
+            if parent_path.endswith(v) or ("/drive/root:" + v) in parent_path:
+                logging.info(f"Resolved by search: {it.get('name')} [{it.get('id')}] @ {parent_path}")
+                return it["id"]
 
-    # If nothing matched, log what we tried and fail clearly
+    if results:
+        best = results[0]
+        logging.warning(f"Resolved by search (fallback first match): {best.get('name')} @ {best.get('parentReference', {}).get('path','')}")
+        return best["id"]
+
     tried_info = "; ".join([f"{p} -> {code}" for p, code in tried])
     raise RuntimeError(
         "Excel file not found via Graph.\n"
         f" Tried paths: {tried_info}\n"
-        f" Search for '{filename}' returned {len(results)} items; none matched folder '{folder_hint}'."
+        f" Search for '{filename}' returned 0 items."
     )
 
 # ----------- Read ONLY the named table -----------
+EXPECTED_HEADERS = ["SKU","Model","In_transit","Total_preorders","Stock","RSP"]
+
 def read_table_values(site_id: str, item_id: str, token: str) -> Tuple[List[str], List[List]]:
     table_seg = quote(SP_TABLE_NAME, safe="")
     base = f"{GRAPH_BASE}/sites/{site_id}/drive/items/{item_id}/workbook/tables/{table_seg}"
