@@ -2,8 +2,8 @@ name: Build Kaspi XML
 
 on:
   schedule:
-    - cron: "*/30 * * * *"      # every 30 minutes
-  workflow_dispatch: {}
+    - cron: "0 3-15/2 * * 1-5"   # every 2 hours, Mon–Fri, 08:00–20:00 in UTC+5
+  workflow_dispatch: {}          # keep manual trigger
 
 # ⬇️ give the token explicit write perms
 permissions:
