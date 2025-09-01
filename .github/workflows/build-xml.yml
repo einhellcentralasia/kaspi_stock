@@ -26,6 +26,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # ⬇️ NEW: sanity check that secrets actually reach the runner (no values printed)
+      - name: Sanity check env (no secret values)
+        run: |
+          set -e
+          echo "LEN TENANT_ID: ${#TENANT_ID}"
+          echo "LEN CLIENT_ID: ${#CLIENT_ID}"
+          echo "LEN CLIENT_SECRET: ${#CLIENT_SECRET}"
+          [[ ${#TENANT_ID} -ge 36 ]] || (echo "TENANT_ID looks too short" && exit 1)
+          [[ ${#CLIENT_ID} -ge 36 ]] || (echo "CLIENT_ID looks too short" && exit 1)
+          [[ ${#CLIENT_SECRET} -ge 20 ]] || (echo "CLIENT_SECRET looks too short" && exit 1)
+        env:
+          TENANT_ID: ${{ secrets.TENANT_ID }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+
       - name: Generate XML (Graph Table API)
         env:
           TENANT_ID: ${{ secrets.TENANT_ID }}
