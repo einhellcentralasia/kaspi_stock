@@ -3,17 +3,18 @@
 
 """
 Generate Kaspi autoload XML from a SINGLE Excel table via Microsoft Graph (Application permissions).
-- Pulls ONLY the named table (SP_TABLE_NAME) from SP_XLSX_PATH on SharePoint.
-- Hard-fails if headers ≠ ["SKU","Model","In_transit","Total_preorders","Stock","RSP"] in this exact order.
-- Writes docs/price.xml for GitHub Pages.
+- Auth via CLIENT_ID/SECRET (app permissions).
+- Resolves site + file robustly (path OR search fallback).
+- Reads ONLY the named table, strict header schema.
+- Produces docs/price.xml.
 """
 
 import os, sys, logging
 from datetime import datetime
 from typing import List, Tuple
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
-# ---- Error handling & logging ----
+# ---- Imports ----
 try:
     import requests
     from lxml import etree
@@ -25,11 +26,11 @@ except Exception as e:
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
 
-# ----------- Config helpers -----------
+# ----------- Env helpers -----------
 def env(name: str, required: bool = True, default: str = None) -> str:
     val = os.getenv(name, default)
     if val is not None:
-        val = val.strip()  # trim accidental spaces/newlines
+        val = val.strip()
     if required and (val is None or val == ""):
         raise RuntimeError(f"Missing required env var: {name}")
     return val
@@ -39,9 +40,9 @@ CLIENT_ID   = env("CLIENT_ID")
 CLIENT_SECRET = env("CLIENT_SECRET")
 
 SP_SITE_HOSTNAME = env("SP_SITE_HOSTNAME")
-SP_SITE_PATH     = env("SP_SITE_PATH")
-SP_XLSX_PATH     = env("SP_XLSX_PATH")
-SP_TABLE_NAME    = env("SP_TABLE_NAME")
+SP_SITE_PATH     = env("SP_SITE_PATH")         # e.g. /sites/einhell_common
+SP_XLSX_PATH     = env("SP_XLSX_PATH")         # e.g. /Shared Documents/General/_system_files/TREF_file.xlsx
+SP_TABLE_NAME    = env("SP_TABLE_NAME")        # e.g. tref_table
 
 COMPANY_NAME   = env("COMPANY_NAME")
 MERCHANT_ID    = env("MERCHANT_ID")
@@ -49,11 +50,11 @@ KASPI_STORE_ID = env("KASPI_STORE_ID")
 
 DEFAULT_PREORDER_DAYS = int(os.getenv("DEFAULT_PREORDER_DAYS", "3"))
 
-GRAPH_BASE = "https://graph.microsoft.com/v1.0"
+GRAPH_BASE  = "https://graph.microsoft.com/v1.0"
 GRAPH_SCOPE = ["https://graph.microsoft.com/.default"]
 EXPECTED_HEADERS = ["SKU","Model","In_transit","Total_preorders","Stock","RSP"]
 
-# ----------- Graph auth -----------
+# ----------- Graph base -----------
 def get_token() -> str:
     app = msal.ConfidentialClientApplication(
         CLIENT_ID,
@@ -71,17 +72,60 @@ def gget(url: str, token: str, timeout: int = 30) -> dict:
         raise RuntimeError(f"Graph GET {url} failed: {r.status_code} {r.text[:300]}")
     return r.json()
 
-# ----------- Locate site & file -----------
+def gget_raw(url: str, token: str, timeout: int = 30) -> requests.Response:
+    return requests.get(url, headers={"Authorization": f"Bearer {token}"}, timeout=timeout)
+
+# ----------- Resolve site & file (robust) -----------
 def resolve_site_id(token: str) -> str:
     url = f"{GRAPH_BASE}/sites/{SP_SITE_HOSTNAME}:{SP_SITE_PATH}"
     data = gget(url, token)
     return data["id"]
 
-def resolve_item_id(site_id: str, token: str) -> str:
-    path_enc = quote(SP_XLSX_PATH, safe="/:+()%!$&',;=@")
+def try_item_by_path(site_id: str, path: str, token: str):
+    # URL-encode but keep slashes; allow special chars common in SP names
+    path_enc = quote(path, safe="/:+()%!$&',;=@")
     url = f"{GRAPH_BASE}/sites/{site_id}/drive/root:{path_enc}"
+    r = gget_raw(url, token)
+    return r
+
+def search_item(site_id: str, filename: str, token: str):
+    q = quote(filename, safe="")
+    url = f"{GRAPH_BASE}/sites/{site_id}/drive/root/search(q='{q}')"
     data = gget(url, token)
-    return data["id"]
+    return data.get("value", [])
+
+def resolve_item_id(site_id: str, token: str) -> str:
+    # 1) Try the provided path
+    tried = []
+    for candidate in [
+        SP_XLSX_PATH,
+        SP_XLSX_PATH.replace("/Shared Documents", "/Documents", 1),  # some tenants expose "Documents"
+    ]:
+        r = try_item_by_path(site_id, candidate, token)
+        tried.append((candidate, r.status_code))
+        if r.status_code < 400:
+            return r.json()["id"]
+
+    # 2) Fall back to searching by file name
+    filename = os.path.basename(unquote(SP_XLSX_PATH))
+    folder_hint = os.path.dirname(unquote(SP_XLSX_PATH)).replace("\\", "/")
+    results = search_item(site_id, filename, token)
+
+    # Pick the result whose parent path matches our folder (best-effort)
+    for it in results:
+        # item['parentReference']['path'] like: /drive/root:/Shared Documents/General/_system_files
+        parent_path = it.get("parentReference", {}).get("path", "")
+        if parent_path.endswith(folder_hint) or folder_hint in parent_path:
+            logging.info(f"Resolved by search: {it.get('name')} [{it.get('id')}] @ {parent_path}")
+            return it["id"]
+
+    # If nothing matched, log what we tried and fail clearly
+    tried_info = "; ".join([f"{p} -> {code}" for p, code in tried])
+    raise RuntimeError(
+        "Excel file not found via Graph.\n"
+        f" Tried paths: {tried_info}\n"
+        f" Search for '{filename}' returned {len(results)} items; none matched folder '{folder_hint}'."
+    )
 
 # ----------- Read ONLY the named table -----------
 def read_table_values(site_id: str, item_id: str, token: str) -> Tuple[List[str], List[List]]:
