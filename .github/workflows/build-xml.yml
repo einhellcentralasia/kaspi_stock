@@ -2,8 +2,12 @@ name: Build Kaspi XML
 
 on:
   schedule:
-    - cron: "*/30 * * * *"     # every 30 minutes
-  workflow_dispatch: {}         # allow manual run
+    - cron: "*/30 * * * *"      # every 30 minutes
+  workflow_dispatch: {}
+
+# ⬇️ give the token explicit write perms
+permissions:
+  contents: write
 
 concurrency:
   group: kaspi-xml
@@ -26,7 +30,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # ⬇️ NEW: sanity check that secrets actually reach the runner (no values printed)
       - name: Sanity check env (no secret values)
         run: |
           set -e
