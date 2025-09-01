@@ -6,7 +6,7 @@ Kaspi XML from ONE Excel table via Microsoft Graph (Application permissions).
 - Auth with CLIENT_ID/SECRET.
 - Robust file resolve: tries provided path, "Documents" variant, and search().
 - Reads ONLY SP_TABLE_NAME, strict header schema.
-- Writes docs/price.xml.
+- Writes docs/price.xml with proper Kaspi namespace/XSD.
 """
 
 import os, sys, logging
@@ -52,6 +52,7 @@ DEFAULT_PREORDER_DAYS = int(os.getenv("DEFAULT_PREORDER_DAYS", "3"))
 
 GRAPH_BASE  = "https://graph.microsoft.com/v1.0"
 GRAPH_SCOPE = ["https://graph.microsoft.com/.default"]
+
 EXPECTED_HEADERS = ["SKU","Model","In_transit","Total_preorders","Stock","RSP"]
 
 # ----------- Graph base -----------
@@ -93,10 +94,8 @@ def search_item(site_id: str, filename: str, token: str):
     return data.get("value", [])
 
 def _folder_variants(folder_hint: str) -> List[str]:
-    # Accept all three common shapes
     variants = {folder_hint}
     variants.add(folder_hint.replace("/Shared Documents", "/Documents", 1))
-    # Also allow “root-relative” shape (no library segment)
     if folder_hint.startswith("/Shared Documents/"):
         variants.add(folder_hint.replace("/Shared Documents/", "/", 1).rstrip("/"))
     if folder_hint.startswith("/Documents/"):
@@ -104,13 +103,11 @@ def _folder_variants(folder_hint: str) -> List[str]:
     return list(variants)
 
 def resolve_item_id(site_id: str, token: str) -> str:
-    # 1) direct path tries
     tried = []
     for candidate in [
-        SP_XLSX_PATH,                                        # as provided
+        SP_XLSX_PATH,
         SP_XLSX_PATH.replace("/Shared Documents", "/Documents", 1),
         SP_XLSX_PATH.replace("/Documents", "/Shared Documents", 1),
-        # try without library name (root of drive is "Documents")
         SP_XLSX_PATH.replace("/Shared Documents", "", 1) if SP_XLSX_PATH.startswith("/Shared Documents/") else SP_XLSX_PATH,
         SP_XLSX_PATH.replace("/Documents", "", 1) if SP_XLSX_PATH.startswith("/Documents/") else SP_XLSX_PATH,
     ]:
@@ -121,13 +118,11 @@ def resolve_item_id(site_id: str, token: str) -> str:
             logging.info(f"Resolved by path: {candidate}")
             return r.json()["id"]
 
-    # 2) fallback: search by name, then pick the one whose parent path matches any variant
     filename = os.path.basename(unquote(SP_XLSX_PATH))
     folder_hint = os.path.dirname(unquote(SP_XLSX_PATH)).replace("\\", "/")
     variants = _folder_variants(folder_hint)
     results = search_item(site_id, filename, token)
 
-    # Prefer exact folder match (any variant), else first exact name
     for it in results:
         parent_path = it.get("parentReference", {}).get("path", "")
         for v in variants:
@@ -148,8 +143,6 @@ def resolve_item_id(site_id: str, token: str) -> str:
     )
 
 # ----------- Read ONLY the named table -----------
-EXPECTED_HEADERS = ["SKU","Model","In_transit","Total_preorders","Stock","RSP"]
-
 def read_table_values(site_id: str, item_id: str, token: str) -> Tuple[List[str], List[List]]:
     table_seg = quote(SP_TABLE_NAME, safe="")
     base = f"{GRAPH_BASE}/sites/{site_id}/drive/items/{item_id}/workbook/tables/{table_seg}"
@@ -179,33 +172,54 @@ def to_dataframe(headers: List[str], rows: List[List]) -> pd.DataFrame:
     df = df[df["SKU"] != ""].copy()
     return df
 
-# ----------- Build Kaspi XML -----------
+# ----------- Build Kaspi XML (with namespace + XSD) -----------
+NS  = "kaspiShopping"
+XSI = "http://www.w3.org/2001/XMLSchema-instance"
+
+def _t(name: str) -> str:
+    return f"{{{NS}}}{name}"
+
 def build_kaspi_xml(df: pd.DataFrame) -> bytes:
-    root = etree.Element("kaspi_catalog",
-                         date=datetime.now().strftime("%Y-%m-%d %H:%M"),
-                         currency="KZT")
-    etree.SubElement(root, "company").text = str(COMPANY_NAME)
-    etree.SubElement(root, "merchantid").text = str(MERCHANT_ID)
-    offers = etree.SubElement(root, "offers")
+    nsmap = {None: NS, "xsi": XSI}
+    root = etree.Element(
+        _t("kaspi_catalog"),
+        nsmap=nsmap,
+        date=datetime.now().strftime("%Y-%m-%d %H:%M"),
+        currency="KZT",
+    )
+    # XSD binding expected by Kaspi
+    root.set(f"{{{XSI}}}schemaLocation", f"{NS} http://kaspi.kz/kaspishopping.xsd")
+
+    etree.SubElement(root, _t("company")).text = str(COMPANY_NAME)
+    etree.SubElement(root, _t("merchantid")).text = str(MERCHANT_ID)
+    offers = etree.SubElement(root, _t("offers"))
+
     for _, r in df.iterrows():
-        sku, model = str(r["SKU"]), str(r["Model"])
+        sku = str(r["SKU"])
+        model = str(r["Model"])
         stock = int(r["Stock"])
         in_transit = int(r["In_transit"])
         preorders = int(r["Total_preorders"])
         price = float(r["RSP"])
-        offer = etree.SubElement(offers, "offer", sku=sku)
-        etree.SubElement(offer, "model").text = model
-        etree.SubElement(offer, "price").text = f"{price:.2f}"
-        avs = etree.SubElement(offer, "availabilities")
+
+        offer = etree.SubElement(offers, _t("offer"), sku=sku)
+        etree.SubElement(offer, _t("model")).text = model
+        etree.SubElement(offer, _t("price")).text = f"{price:.2f}"
+
+        avs = etree.SubElement(offer, _t("availabilities"))
         available_flag = "yes" if stock > 0 else "no"
-        etree.SubElement(
-            avs, "availability",
+        av_el = etree.SubElement(
+            avs, _t("availability"),
             available=available_flag,
             storeId=str(KASPI_STORE_ID),
             stockCount=str(max(stock, 0))
         )
+
+        # Preorder handling (optional). If no stock but incoming/preorders, tell Kaspi about lead time.
         if stock <= 0 and (in_transit > 0 or preorders > 0):
-            etree.SubElement(offer, "preOrder").text = str(DEFAULT_PREORDER_DAYS)
+            # Kaspi supports a <preOrder> element inside <offer>
+            etree.SubElement(offer, _t("preOrder")).text = str(DEFAULT_PREORDER_DAYS)
+
     return etree.tostring(root, xml_declaration=True, encoding="UTF-8", pretty_print=True)
 
 # ----------- Write output -----------
