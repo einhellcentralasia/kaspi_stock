@@ -1,0 +1,19 @@
+# Ignore Excel files
+*.xlsx
+*.xlsm
+*.xlsb
+*.xls
+
+# Ignore local environment files
+.env
+*.env
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore OS files
+.DS_Store
+
+# Ignore secrets/configs
+secrets.json
