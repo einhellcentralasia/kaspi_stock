@@ -1,70 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" date="2025-09-02 11:27" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd">
-  <company>TREF</company>
-  <merchantid>30332726</merchantid>
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" date="2025-09-02 11:47" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd">
+  <company>Einhell</company>
+  <merchantid>30245761</merchantid>
   <offers>
-    <offer sku="134447299_549032053">
-      <model>строительный, пластик</model>
-      <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="50"/>
-      </availabilities>
-      <price>6188</price>
-    </offer>
-    <offer sku="123892519_945539605">
-      <model>NSTR/2, пластик, ткань, полипропилен</model>
-      <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="20"/>
-      </availabilities>
-      <price>6490</price>
-    </offer>
-    <offer sku="240164051">
-      <model>Гигиенические трусы 1803 1 шт L</model>
-      <availabilities>
-        <availability available="no" storeId="PP1" stockCount="0"/>
-      </availabilities>
-      <price>4500</price>
-    </offer>
     <offer sku="4513812">
       <model>Аккум. Перфоратор SDS-Plus Einhell TE-HD 18 Li-Solo (4513812)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="yes" storeId="PP1" stockCount="44"/>
       </availabilities>
-      <price>500000</price>
+      <price>47600</price>
     </offer>
-    <offer sku="4513942">
-      <model></model>
+    <offer sku="4431166">
+      <model>Аккум. Углошлифмашина Einhell TE-AG 18/115-2 Li - Solo (4431166)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="3"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
-      <price>600000</price>
-    </offer>
-    <offer sku="4259995">
-      <model>Аккум. Шлифмашина для стен и потолка Einhell TP-DWS 18/225 Li BL Solo (4259995)</model>
-      <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="4"/>
-      </availabilities>
-      <price>900000</price>
-    </offer>
-    <offer sku="445073446">
-      <model>Гигиенические трусы 1803 1 шт XL</model>
-      <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
-      </availabilities>
-      <price>500000</price>
-    </offer>
-    <offer sku="123834865_951635800">
-      <model></model>
-      <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="3"/>
-      </availabilities>
-      <price>1199</price>
-    </offer>
-    <offer sku="113327944_725238793">
-      <model>Мышь для совместных игр, для самостоятельных игр искусственный мех, плюш 3 шт</model>
-      <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
-      </availabilities>
-      <price>0</price>
+      <price>39900</price>
     </offer>
   </offers>
 </kaspi_catalog>
