@@ -2,66 +2,62 @@
 # -*- coding: utf-8 -*-
 
 """
-Generate Kaspi autoload XML from ONE Excel table in SharePoint using Microsoft Graph (application permissions).
-- Auth: Azure Entra app (CLIENT_ID / CLIENT_SECRET / TENANT_ID).
-- File resolve: robust (direct path variants + search fallback).
-- Strict header validation: ["SKU","Model","In_transit","Total_preorders","Stock","RSP"].
-- Outputs docs/price.xml with Kaspi-required namespace & schemaLocation (NO 'currency' on root).
-- Writes <price> as INTEGER (Kaspi XSD requires integer KZT), stock/preorder as integers.
+Generate minimal Kaspi XML from ONE Excel table via Microsoft Graph (application permissions).
+- Requires columns: SKU, Model, Stock, RSP (case-insensitive). Extra columns are ignored.
+- Produces schema-compliant feed (no <preOrder>, integer <price>).
+- Writes docs/price.xml for GitHub Pages.
+
+Required ENV (GitHub Secrets):
+  TENANT_ID           (Azure AD tenant ID)
+  CLIENT_ID           (App registration ID)
+  CLIENT_SECRET       (Client secret)
+  SP_SITE_HOSTNAME    e.g., bavatools.sharepoint.com
+  SP_SITE_PATH        e.g., /sites/einhell_common
+  SP_XLSX_PATH        e.g., /Shared Documents/General/_system_files/Bava_data.xlsx
+  SP_TABLE_NAME       e.g., kaspi_table
+  COMPANY_NAME        e.g., Einhell
+  MERCHANT_ID         e.g., 30245761
+  KASPI_STORE_ID      e.g., PP1
 """
 
 import os
 import sys
 import logging
 from datetime import datetime
-from typing import List, Tuple
 from urllib.parse import quote, unquote
-from decimal import Decimal, ROUND_HALF_UP
 
-# ---------- Third-party ----------
-# requirements.txt should include:
-#   msal
-#   requests
-#   lxml
-#   pandas
-import requests
-import msal
 import pandas as pd
+import requests
 from lxml import etree
+import msal
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
 
-# ---------- Env helpers ----------
-def env(name: str, required: bool = True, default: str = None) -> str:
-    val = os.getenv(name, default)
-    if val is not None:
-        val = val.strip()
-    if required and (val is None or val == ""):
+# ---------- helpers ----------
+def env(name: str) -> str:
+    v = os.getenv(name)
+    if not v:
         raise RuntimeError(f"Missing required env var: {name}")
-    return val
+    return v.strip()
 
-TENANT_ID         = env("TENANT_ID")
-CLIENT_ID         = env("CLIENT_ID")
-CLIENT_SECRET     = env("CLIENT_SECRET")
+TENANT_ID        = env("TENANT_ID")
+CLIENT_ID        = env("CLIENT_ID")
+CLIENT_SECRET    = env("CLIENT_SECRET")
 
-SP_SITE_HOSTNAME  = env("SP_SITE_HOSTNAME")  # e.g. bavatools.sharepoint.com
-SP_SITE_PATH      = env("SP_SITE_PATH")      # e.g. /sites/einhell_common
-SP_XLSX_PATH      = env("SP_XLSX_PATH")      # e.g. /Shared Documents/General/_system_files/tref_file.xlsx
-SP_TABLE_NAME     = env("SP_TABLE_NAME")     # e.g. tref_table
+SP_SITE_HOSTNAME = env("SP_SITE_HOSTNAME")
+SP_SITE_PATH     = env("SP_SITE_PATH")
+SP_XLSX_PATH     = env("SP_XLSX_PATH")
+SP_TABLE_NAME    = env("SP_TABLE_NAME")
 
-COMPANY_NAME      = env("COMPANY_NAME")      # e.g. TREF
-MERCHANT_ID       = env("MERCHANT_ID")       # e.g. 30332726
-KASPI_STORE_ID    = env("KASPI_STORE_ID")    # e.g. PP1
-
-DEFAULT_PREORDER_DAYS = int(os.getenv("DEFAULT_PREORDER_DAYS", "3"))
+COMPANY_NAME     = env("COMPANY_NAME")
+MERCHANT_ID      = env("MERCHANT_ID")
+KASPI_STORE_ID   = env("KASPI_STORE_ID")
 
 GRAPH_BASE  = "https://graph.microsoft.com/v1.0"
 GRAPH_SCOPE = ["https://graph.microsoft.com/.default"]
 
-EXPECTED_HEADERS = ["SKU", "Model", "In_transit", "Total_preorders", "Stock", "RSP"]
+REQUIRED_COLS = ["SKU", "Model", "Stock", "RSP"]  # minimal set for Kaspi
 
-
-# ---------- Graph auth / GET ----------
 def get_token() -> str:
     app = msal.ConfidentialClientApplication(
         CLIENT_ID,
@@ -70,222 +66,157 @@ def get_token() -> str:
     )
     result = app.acquire_token_for_client(scopes=GRAPH_SCOPE)
     if "access_token" not in result:
-        raise RuntimeError(f"MS Graph auth failed: {result.get('error_description', 'no_description')}")
+        raise RuntimeError(f"MS Graph auth failed: {result}")
     return result["access_token"]
-
 
 def gget(url: str, token: str, timeout: int = 30) -> dict:
     r = requests.get(url, headers={"Authorization": f"Bearer {token}"}, timeout=timeout)
     if r.status_code >= 400:
-        raise RuntimeError(f"Graph GET {url} failed: {r.status_code} {r.text[:300]}")
+        raise RuntimeError(f"Graph GET failed {r.status_code}: {r.text[:400]}")
     return r.json()
-
 
 def gget_raw(url: str, token: str, timeout: int = 30) -> requests.Response:
     return requests.get(url, headers={"Authorization": f"Bearer {token}"}, timeout=timeout)
 
-
-# ---------- Resolve site & file (robust) ----------
 def resolve_site_id(token: str) -> str:
-    url = f"{GRAPH_BASE}/sites/{SP_SITE_HOSTNAME}:{SP_SITE_PATH}"
-    data = gget(url, token)
+    data = gget(f"{GRAPH_BASE}/sites/{SP_SITE_HOSTNAME}:{SP_SITE_PATH}", token)
     return data["id"]
 
-
 def try_item_by_path(site_id: str, path: str, token: str):
-    path_enc = quote(path, safe="/:+()%!$&',;=@")
-    url = f"{GRAPH_BASE}/sites/{site_id}/drive/root:{path_enc}"
+    path = path if path.startswith("/") else "/" + path
+    url = f"{GRAPH_BASE}/sites/{site_id}/drive/root:{quote(path, safe='/:+()%!$&\',;=@')}"
     return gget_raw(url, token)
-
 
 def search_item(site_id: str, filename: str, token: str):
     q = quote(filename, safe="")
     url = f"{GRAPH_BASE}/sites/{site_id}/drive/root/search(q='{q}')"
-    data = gget(url, token)
-    return data.get("value", [])
-
-
-def _folder_variants(folder_hint: str) -> List[str]:
-    v = {folder_hint}
-    v.add(folder_hint.replace("/Shared Documents", "/Documents", 1))
-    if folder_hint.startswith("/Shared Documents/"):
-        v.add(folder_hint.replace("/Shared Documents/", "/", 1).rstrip("/"))
-    if folder_hint.startswith("/Documents/"):
-        v.add(folder_hint.replace("/Documents/", "/", 1).rstrip("/"))
-    return list(v)
-
+    return gget(url, token).get("value", [])
 
 def resolve_item_id(site_id: str, token: str) -> str:
-    tried = []
-    candidates = [
+    # 1) try direct
+    for candidate in {
         SP_XLSX_PATH,
-        SP_XLSX_PATH.replace("/Shared Documents", "/Documents", 1),
-        SP_XLSX_PATH.replace("/Documents", "/Shared Documents", 1),
-    ]
-    if SP_XLSX_PATH.startswith("/Shared Documents/"):
-        candidates.append(SP_XLSX_PATH.replace("/Shared Documents", "", 1))
-    if SP_XLSX_PATH.startswith("/Documents/"):
-        candidates.append(SP_XLSX_PATH.replace("/Documents", "", 1))
-
-    for c in candidates:
-        c = c if c.startswith("/") else ("/" + c)
-        r = try_item_by_path(site_id, c, token)
-        tried.append((c, r.status_code))
+        SP_XLSX_PATH.replace("/Shared Documents", "/Documents"),
+        SP_XLSX_PATH.replace("/Documents", "/Shared Documents"),
+        SP_XLSX_PATH.replace("/Shared Documents/", "/") if SP_XLSX_PATH.startswith("/Shared Documents/") else SP_XLSX_PATH,
+        SP_XLSX_PATH.replace("/Documents/", "/")         if SP_XLSX_PATH.startswith("/Documents/") else SP_XLSX_PATH,
+    }:
+        r = try_item_by_path(site_id, candidate, token)
         if r.status_code < 400:
-            logging.info(f"Resolved by path: {c}")
+            logging.info(f"Resolved by path: {candidate}")
             return r.json()["id"]
 
+    # 2) fallback: search by name and match folder tail
     filename = os.path.basename(unquote(SP_XLSX_PATH))
-    folder_hint = os.path.dirname(unquote(SP_XLSX_PATH)).replace("\\", "/")
-    variants = _folder_variants(folder_hint)
-    results = search_item(site_id, filename, token)
+    folder   = os.path.dirname(unquote(SP_XLSX_PATH)).replace("\\", "/")
+    variants = {
+        folder,
+        folder.replace("/Shared Documents", "/Documents"),
+        folder.replace("/Documents", "/Shared Documents"),
+        folder.replace("/Shared Documents/", "/") if folder.startswith("/Shared Documents/") else folder,
+        folder.replace("/Documents/", "/")         if folder.startswith("/Documents/") else folder,
+    }
+    for it in search_item(site_id, filename, token):
+        parent = it.get("parentReference", {}).get("path", "")
+        if any(parent.endswith(v) or ("/drive/root:" + v) in parent for v in variants):
+            logging.info(f"Resolved by search: {it.get('name')} @ {parent}")
+            return it["id"]
 
-    for it in results:
-        parent_path = it.get("parentReference", {}).get("path", "")
-        for v in variants:
-            if parent_path.endswith(v) or ("/drive/root:" + v) in parent_path:
-                logging.info(f"Resolved by search: {it.get('name')} [{it.get('id')}] @ {parent_path}")
-                return it["id"]
+    raise RuntimeError("Excel file not found via Graph.")
 
-    if results:
-        best = results[0]
-        logging.warning(f"Resolved by search (first match): {best.get('name')} @ {best.get('parentReference', {}).get('path','')}")
-        return best["id"]
+def read_table(site_id: str, item_id: str, token: str) -> pd.DataFrame:
+    base = f"{GRAPH_BASE}/sites/{site_id}/drive/items/{item_id}/workbook/tables/{quote(SP_TABLE_NAME, safe='')}"
+    hdr  = gget(f"{base}/headerRowRange", token).get("values", [[]])
+    headers = [str(h).strip() for h in (hdr[0] if hdr else [])]
 
-    tried_info = "; ".join([f"{p} -> {code}" for p, code in tried])
-    raise RuntimeError(
-        "Excel file not found via Graph.\n"
-        f" Tried paths: {tried_info}\n"
-        f" Search for '{filename}' returned 0 items."
-    )
+    body = gget(f"{base}/dataBodyRange", token).get("values", []) or []
+    df = pd.DataFrame(body, columns=headers)
 
+    # map case-insensitively
+    lower_map = {c.lower(): c for c in df.columns}
+    missing = [c for c in REQUIRED_COLS if c.lower() not in lower_map]
+    if missing:
+        raise ValueError(f"Table '{SP_TABLE_NAME}' must contain columns (any case): {REQUIRED_COLS}. Missing: {missing}")
 
-# ---------- Read ONLY the named table ----------
-def read_table_values(site_id: str, item_id: str, token: str) -> Tuple[List[str], List[List]]:
-    table_seg = quote(SP_TABLE_NAME, safe="")
-    base = f"{GRAPH_BASE}/sites/{site_id}/drive/items/{item_id}/workbook/tables/{table_seg}"
+    # keep only required
+    df = df[[lower_map[c.lower()] for c in REQUIRED_COLS]].copy()
+    df.columns = REQUIRED_COLS  # normalize names
 
-    hdr = gget(f"{base}/headerRowRange", token)
-    headers = hdr.get("values", [[]])[0] if hdr.get("values") else []
-    headers = [str(h).strip() for h in headers]
-
-    body = gget(f"{base}/dataBodyRange", token)
-    rows = body.get("values", []) or []
-    return headers, rows
-
-
-def validate_headers(headers: List[str]):
-    if headers != EXPECTED_HEADERS:
-        raise ValueError(
-            "Table schema mismatch.\n"
-            f"Expected: {EXPECTED_HEADERS}\n"
-            f"Found   : {headers}\n"
-            "Refuse to continue (safety lock)."
-        )
-
-
-def to_dataframe(headers: List[str], rows: List[List]) -> pd.DataFrame:
-    df = pd.DataFrame(rows, columns=headers)
-    df["SKU"] = df["SKU"].astype(str).str.strip()
+    # clean/convert
+    df["SKU"]   = df["SKU"].astype(str).str.strip()
     df["Model"] = df["Model"].astype(str).str.strip()
-    for col in ["In_transit", "Total_preorders", "Stock"]:
-        df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0).astype(int)
-    # RSP can be decimal in Excel; will be rounded to integer (KZT) later
-    df["RSP"] = pd.to_numeric(df["RSP"], errors="coerce").fillna(0)
-    df = df[df["SKU"] != ""].copy()
+    df["Stock"] = pd.to_numeric(df["Stock"], errors="coerce").fillna(0).astype(int)
+    df["RSP"]   = pd.to_numeric(df["RSP"], errors="coerce").fillna(0)
+
+    # drop empty SKU rows
+    df = df[df["SKU"] != ""].reset_index(drop=True)
     return df
 
-
-# ---------- Helpers ----------
-def as_int(value) -> int:
-    """Round half up to nearest integer (Kaspi XSD expects integer)."""
-    return int(Decimal(str(value)).quantize(0, rounding=ROUND_HALF_UP))
-
-
-# ---------- Build Kaspi XML (XSD-compliant root; integer price) ----------
 def build_kaspi_xml(df: pd.DataFrame) -> bytes:
-    NS_DEFAULT = "kaspiShopping"
-    NS_XSI = "http://www.w3.org/2001/XMLSchema-instance"
-    nsmap = {None: NS_DEFAULT, "xsi": NS_XSI}
+    # Root with namespace & schemaLocation
+    nsmap = {None: "kaspiShopping", "xsi": "http://www.w3.org/2001/XMLSchema-instance"}
+    root = etree.Element(
+        "kaspi_catalog",
+        nsmap=nsmap,
+        attrib={
+            "{http://www.w3.org/2001/XMLSchema-instance}schemaLocation":
+                "kaspiShopping http://kaspi.kz/kaspishopping.xsd",
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        },
+    )
 
-    root = etree.Element("kaspi_catalog", nsmap=nsmap)
-    root.set("date", datetime.now().strftime("%Y-%m-%d %H:%M"))
-    root.set(f"{{{NS_XSI}}}schemaLocation", f"{NS_DEFAULT} http://kaspi.kz/kaspishopping.xsd")
-
-    # Header
-    etree.SubElement(root, "company").text = str(COMPANY_NAME)
+    etree.SubElement(root, "company").text   = str(COMPANY_NAME)
     etree.SubElement(root, "merchantid").text = str(MERCHANT_ID)
-
     offers = etree.SubElement(root, "offers")
 
     for _, r in df.iterrows():
-        sku        = str(r["SKU"])
-        model      = str(r["Model"])
-        stock      = int(r["Stock"])
-        in_transit = int(r["In_transit"])
-        preorders  = int(r["Total_preorders"])
-        price_val  = as_int(r["RSP"])              # << INTEGER price
+        sku   = r["SKU"]
+        model = r["Model"]
+        stock = max(int(r["Stock"]), 0)
 
-        offer = etree.SubElement(offers, "offer", sku=sku)
+        # Kaspi: price must be INTEGER (KZT)
+        try:
+            price_int = int(round(float(r["RSP"])))
+        except Exception:
+            price_int = 0
+        price_int = max(price_int, 0)
 
-        # Recommended order: model -> availabilities -> price
-        etree.SubElement(offer, "model").text = model
+        offer = etree.SubElement(offers, "offer", sku=str(sku))
+        etree.SubElement(offer, "model").text = str(model)
 
         avs = etree.SubElement(offer, "availabilities")
-        available_flag = "yes" if stock > 0 else "no"
         etree.SubElement(
             avs, "availability",
-            available=available_flag,
+            available=("yes" if stock > 0 else "no"),
             storeId=str(KASPI_STORE_ID),
-            stockCount=str(max(stock, 0)),         # integer in string form
+            stockCount=str(stock),
         )
 
-        if stock <= 0 and (in_transit > 0 or preorders > 0):
-            etree.SubElement(offer, "preOrder").text = str(as_int(DEFAULT_PREORDER_DAYS))
-
-        etree.SubElement(offer, "price").text = str(price_val)   # << integer text
+        etree.SubElement(offer, "price").text = str(price_int)
 
     return etree.tostring(root, xml_declaration=True, encoding="UTF-8", pretty_print=True)
 
-
-# ---------- Write output ----------
 def write_xml(xml_bytes: bytes, out_path: str = "docs/price.xml"):
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "wb") as f:
         f.write(xml_bytes)
 
-
-# ---------- Main ----------
 def main() -> int:
     try:
-        token = get_token()
-        logging.info("Auth OK (Graph).")
+        token  = get_token()
+        site   = resolve_site_id(token)
+        item   = resolve_item_id(site, token)
+        df     = read_table(site, item, token)
 
-        site_id = resolve_site_id(token)
-        logging.info(f"Resolved site id: {site_id}")
+        xml_b  = build_kaspi_xml(df)
+        write_xml(xml_b)
 
-        item_id = resolve_item_id(site_id, token)
-        logging.info(f"Resolved item id: {item_id}")
-
-        headers, rows = read_table_values(site_id, item_id, token)
-        logging.info(f"Read table '{SP_TABLE_NAME}': {len(rows)} rows")
-
-        validate_headers(headers)
-
-        df = to_dataframe(headers, rows)
-        logging.info(f"Dataframe rows after normalization: {len(df)}")
-
-        xml_bytes = build_kaspi_xml(df)
-        write_xml(xml_bytes)
-
-        print("=== SUCCESS: docs/price.xml generated (Kaspi autoload feed) ===")
+        print("SUCCESS: docs/price.xml generated.")
         return 0
-
     except Exception as e:
         logging.exception("Run failed")
         print(f"ERROR: {e}", file=sys.stderr)
         return 1
-
 
 if __name__ == "__main__":
     sys.exit(main())
