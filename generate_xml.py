@@ -57,6 +57,7 @@ GRAPH_BASE  = "https://graph.microsoft.com/v1.0"
 GRAPH_SCOPE = ["https://graph.microsoft.com/.default"]
 
 REQUIRED_COLS = ["SKU", "Model", "Stock", "RSP"]  # minimal set for Kaspi
+SAFE_PATH = "/:+()%!$&',;=@"
 
 def get_token() -> str:
     app = msal.ConfidentialClientApplication(
@@ -84,7 +85,8 @@ def resolve_site_id(token: str) -> str:
 
 def try_item_by_path(site_id: str, path: str, token: str):
     path = path if path.startswith("/") else "/" + path
-    url = f"{GRAPH_BASE}/sites/{site_id}/drive/root:{quote(path, safe='/:+()%!$&\',;=@')}"
+    quoted = quote(path, safe=SAFE_PATH)
+    url = f"{GRAPH_BASE}/sites/{site_id}/drive/root:{quoted}"
     return gget_raw(url, token)
 
 def search_item(site_id: str, filename: str, token: str):
