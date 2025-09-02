@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" date="2025-09-01 17:28" currency="KZT" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" date="2025-09-02 01:55" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd">
   <company>TREF</company>
   <merchantid>30332726</merchantid>
   <offers>
     <offer sku="134447299_549032053">
       <model>строительный, пластик</model>
-      <price>6188.00</price>
       <availabilities>
         <availability available="yes" storeId="PP1" stockCount="50"/>
       </availabilities>
+      <price>6188.00</price>
     </offer>
     <offer sku="123892519_945539605">
       <model>NSTR/2, пластик, ткань, полипропилен</model>
-      <price>6490.00</price>
       <availabilities>
         <availability available="yes" storeId="PP1" stockCount="20"/>
       </availabilities>
+      <price>6490.00</price>
     </offer>
     <offer sku="240164051">
       <model>Гигиенические трусы 1803 1 шт L</model>
-      <price>4500.00</price>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="36"/>
+        <availability available="yes" storeId="PP1" stockCount="100"/>
       </availabilities>
+      <price>4500.00</price>
     </offer>
   </offers>
 </kaspi_catalog>
