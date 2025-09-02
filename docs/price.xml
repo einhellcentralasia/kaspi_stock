@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-09-02 15:39">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-09-02 17:03">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -27,7 +27,7 @@
     <offer sku="4513925">
       <model>Аккум. Шуруповерт Einhell TE-CD 18/40 Li-Solo (4513925)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="29"/>
+        <availability available="yes" storeId="PP1" stockCount="33"/>
       </availabilities>
       <price>27200</price>
     </offer>
@@ -265,28 +265,28 @@
     <offer sku="2342167">
       <model>Сетев. Пылесос Einhell TC-VC 1820 S (2342167)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="116"/>
+        <availability available="yes" storeId="PP1" stockCount="115"/>
       </availabilities>
       <price>32600</price>
     </offer>
     <offer sku="4511489">
       <model>Аккумулятор Einhell 2x18V 4,0Ah PXC-Twinpack CB 1 (4511489)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="57"/>
+        <availability available="yes" storeId="PP1" stockCount="56"/>
       </availabilities>
       <price>39000</price>
     </offer>
     <offer sku="4512097">
       <model>Зарядное устройство в комплекте Einhell 18V 2,5Ah PXC Starter Kit (4512097)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="239"/>
+        <availability available="yes" storeId="PP1" stockCount="234"/>
       </availabilities>
       <price>12900</price>
     </offer>
     <offer sku="4512042">
       <model>Зарядное устройство в комплекте Einhell 18V 4,0Ah PXC Starter Kit 1 (4512042)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="yes" storeId="PP1" stockCount="3"/>
       </availabilities>
       <price>23400</price>
     </offer>
@@ -566,7 +566,7 @@
     <offer sku="4513995">
       <model>Аккум. Шуруповерт Einhell TE-CD 18/40 Li BL (2x2,0Ah) (4513995)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="44"/>
+        <availability available="yes" storeId="PP1" stockCount="43"/>
       </availabilities>
       <price>98600</price>
     </offer>
@@ -1119,7 +1119,7 @@
     <offer sku="4514120">
       <model>USB-адаптер Einhell TC-CP 18 Li USB-Solo (4514120)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="63"/>
+        <availability available="yes" storeId="PP1" stockCount="61"/>
       </availabilities>
       <price>9900</price>
     </offer>
@@ -1161,7 +1161,7 @@
     <offer sku="2347180">
       <model>Аккум. Пылесос Einhell TE-SV 18 Li-Solo (2347180)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="40"/>
+        <availability available="yes" storeId="PP1" stockCount="39"/>
       </availabilities>
       <price>88400</price>
     </offer>
@@ -1238,7 +1238,7 @@
     <offer sku="2347190">
       <model>Аккум. Пылесос Einhell TE-HV 18/06 Li - Solo (2347190)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="8"/>
+        <availability available="yes" storeId="PP1" stockCount="6"/>
       </availabilities>
       <price>47600</price>
     </offer>
@@ -1315,7 +1315,7 @@
     <offer sku="4512103">
       <model>Зарядное устройство в комплекте Einhell Power X-Fastcharger 4A (4512103)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="107"/>
+        <availability available="yes" storeId="PP1" stockCount="106"/>
       </availabilities>
       <price>22700</price>
     </offer>
@@ -1350,14 +1350,14 @@
     <offer sku="4511437">
       <model>Аккумулятор Einhell 5,2 Ah Power X-Change Plus (4511437)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="53"/>
+        <availability available="yes" storeId="PP1" stockCount="52"/>
       </availabilities>
       <price>47600</price>
     </offer>
     <offer sku="4511501">
       <model>Аккумулятор Einhell 3,0 Ah Power X-Change Plus (4511501)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="13"/>
+        <availability available="yes" storeId="PP1" stockCount="12"/>
       </availabilities>
       <price>34000</price>
     </offer>
@@ -1392,7 +1392,7 @@
     <offer sku="4511627">
       <model>Аккумулятор Einhell 18V 4,0Ah SEALED PXC Plus (4511627)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="25"/>
+        <availability available="yes" storeId="PP1" stockCount="23"/>
       </availabilities>
       <price>40800</price>
     </offer>
@@ -1406,7 +1406,7 @@
     <offer sku="4514155">
       <model>Крепление на стену для аккумуляторов Einhell PXC Battery Mounting Gadget (4514155)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="61"/>
+        <availability available="yes" storeId="PP1" stockCount="59"/>
       </availabilities>
       <price>2800</price>
     </offer>
@@ -2148,7 +2148,7 @@
     <offer sku="49568315">
       <model>Лезвия для электрического рубанка Einhell 2 HM-Wendemes. 5,5x82,0x1,1 (49568315)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="376"/>
+        <availability available="yes" storeId="PP1" stockCount="375"/>
       </availabilities>
       <price>10200</price>
     </offer>
@@ -2267,7 +2267,7 @@
     <offer sku="4326180">
       <model>Сетев. Сабельная пила Einhell TE-AP 950 E (4326180)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="11"/>
+        <availability available="yes" storeId="PP1" stockCount="10"/>
       </availabilities>
       <price>53400</price>
     </offer>
@@ -2771,7 +2771,7 @@
     <offer sku="4540012">
       <model>Кейс Einhell Plastic Compartments Set (4540012)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="10"/>
+        <availability available="yes" storeId="PP1" stockCount="9"/>
       </availabilities>
       <price>7500</price>
     </offer>
@@ -3408,7 +3408,7 @@
     <offer sku="4132741">
       <model>Набор аксессуаров для накачки шин. 3 предмета Einhell Druckluftset 3-tlg (4132741)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="6"/>
+        <availability available="yes" storeId="PP1" stockCount="5"/>
       </availabilities>
       <price>19000</price>
     </offer>
@@ -4458,7 +4458,7 @@
     <offer sku="2260112">
       <model>Ручн. Тележка Einhell BT-HT 90 (2260112)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="14"/>
       </availabilities>
       <price>22400</price>
     </offer>
@@ -8189,7 +8189,7 @@
     <offer sku="4512159">
       <model>Зарядное устройство в комплекте Einhell 4Ah PLUS PXC Starter Kit (4512159)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="133"/>
+        <availability available="yes" storeId="PP1" stockCount="132"/>
       </availabilities>
       <price>55100</price>
     </offer>
@@ -8791,7 +8791,7 @@
     <offer sku="89530">
       <model>Стальная вата, 200 г, крупная, номер 03 kwb by Einhell (89530)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="21"/>
+        <availability available="yes" storeId="PP1" stockCount="18"/>
       </availabilities>
       <price>3200</price>
     </offer>
@@ -8812,7 +8812,7 @@
     <offer sku="90690">
       <model>Цифровой штангенциркуль 0-150 мм kwb by Einhell (90690)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="yes" storeId="PP1" stockCount="4"/>
       </availabilities>
       <price>16500</price>
     </offer>
@@ -9071,7 +9071,7 @@
     <offer sku="143100">
       <model>Тестер напряжения с отверткой, CE-TUEV 150 kwb by Einhell (143100)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="9"/>
+        <availability available="yes" storeId="PP1" stockCount="8"/>
       </availabilities>
       <price>2200</price>
     </offer>
