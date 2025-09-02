@@ -5,8 +5,9 @@
 Generate Kaspi autoload XML from ONE Excel table in SharePoint using Microsoft Graph (application permissions).
 - Auth: Azure Entra app (CLIENT_ID / CLIENT_SECRET / TENANT_ID).
 - File resolve: robust (direct path variants + search fallback).
-- Reads ONLY the named Excel table and strictly validates headers.
-- Outputs docs/price.xml with Kaspi-required namespace & schemaLocation (no 'currency' on root).
+- Strict header validation: ["SKU","Model","In_transit","Total_preorders","Stock","RSP"].
+- Outputs docs/price.xml with Kaspi-required namespace & schemaLocation (NO 'currency' on root).
+- Writes <price> as INTEGER (Kaspi XSD requires integer KZT), stock/preorder as integers.
 """
 
 import os
@@ -15,9 +16,14 @@ import logging
 from datetime import datetime
 from typing import List, Tuple
 from urllib.parse import quote, unquote
+from decimal import Decimal, ROUND_HALF_UP
 
 # ---------- Third-party ----------
-# pip install msal requests lxml pandas
+# requirements.txt should include:
+#   msal
+#   requests
+#   lxml
+#   pandas
 import requests
 import msal
 import pandas as pd
@@ -81,14 +87,12 @@ def gget_raw(url: str, token: str, timeout: int = 30) -> requests.Response:
 
 # ---------- Resolve site & file (robust) ----------
 def resolve_site_id(token: str) -> str:
-    # Sites: {hostname}:{/site-path}
     url = f"{GRAPH_BASE}/sites/{SP_SITE_HOSTNAME}:{SP_SITE_PATH}"
     data = gget(url, token)
     return data["id"]
 
 
 def try_item_by_path(site_id: str, path: str, token: str):
-    # Encode path but keep slashes etc.
     path_enc = quote(path, safe="/:+()%!$&',;=@")
     url = f"{GRAPH_BASE}/sites/{site_id}/drive/root:{path_enc}"
     return gget_raw(url, token)
@@ -102,7 +106,6 @@ def search_item(site_id: str, filename: str, token: str):
 
 
 def _folder_variants(folder_hint: str) -> List[str]:
-    # Accept common SharePoint library shapes
     v = {folder_hint}
     v.add(folder_hint.replace("/Shared Documents", "/Documents", 1))
     if folder_hint.startswith("/Shared Documents/"):
@@ -113,7 +116,6 @@ def _folder_variants(folder_hint: str) -> List[str]:
 
 
 def resolve_item_id(site_id: str, token: str) -> str:
-    # 1) Try direct paths (with common variants)
     tried = []
     candidates = [
         SP_XLSX_PATH,
@@ -133,7 +135,6 @@ def resolve_item_id(site_id: str, token: str) -> str:
             logging.info(f"Resolved by path: {c}")
             return r.json()["id"]
 
-    # 2) Fallback search by filename + parent path match
     filename = os.path.basename(unquote(SP_XLSX_PATH))
     folder_hint = os.path.dirname(unquote(SP_XLSX_PATH)).replace("\\", "/")
     variants = _folder_variants(folder_hint)
@@ -189,12 +190,19 @@ def to_dataframe(headers: List[str], rows: List[List]) -> pd.DataFrame:
     df["Model"] = df["Model"].astype(str).str.strip()
     for col in ["In_transit", "Total_preorders", "Stock"]:
         df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0).astype(int)
-    df["RSP"] = pd.to_numeric(df["RSP"], errors="coerce").fillna(0).round(2)
+    # RSP can be decimal in Excel; will be rounded to integer (KZT) later
+    df["RSP"] = pd.to_numeric(df["RSP"], errors="coerce").fillna(0)
     df = df[df["SKU"] != ""].copy()
     return df
 
 
-# ---------- Build Kaspi XML (XSD-compliant root; no 'currency') ----------
+# ---------- Helpers ----------
+def as_int(value) -> int:
+    """Round half up to nearest integer (Kaspi XSD expects integer)."""
+    return int(Decimal(str(value)).quantize(0, rounding=ROUND_HALF_UP))
+
+
+# ---------- Build Kaspi XML (XSD-compliant root; integer price) ----------
 def build_kaspi_xml(df: pd.DataFrame) -> bytes:
     NS_DEFAULT = "kaspiShopping"
     NS_XSI = "http://www.w3.org/2001/XMLSchema-instance"
@@ -216,7 +224,7 @@ def build_kaspi_xml(df: pd.DataFrame) -> bytes:
         stock      = int(r["Stock"])
         in_transit = int(r["In_transit"])
         preorders  = int(r["Total_preorders"])
-        price_val  = float(r["RSP"])
+        price_val  = as_int(r["RSP"])              # << INTEGER price
 
         offer = etree.SubElement(offers, "offer", sku=sku)
 
@@ -229,13 +237,13 @@ def build_kaspi_xml(df: pd.DataFrame) -> bytes:
             avs, "availability",
             available=available_flag,
             storeId=str(KASPI_STORE_ID),
-            stockCount=str(max(stock, 0)),
+            stockCount=str(max(stock, 0)),         # integer in string form
         )
 
         if stock <= 0 and (in_transit > 0 or preorders > 0):
-            etree.SubElement(offer, "preOrder").text = str(DEFAULT_PREORDER_DAYS)
+            etree.SubElement(offer, "preOrder").text = str(as_int(DEFAULT_PREORDER_DAYS))
 
-        etree.SubElement(offer, "price").text = f"{price_val:.2f}"
+        etree.SubElement(offer, "price").text = str(price_val)   # << integer text
 
     return etree.tostring(root, xml_declaration=True, encoding="UTF-8", pretty_print=True)
 
