@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kaspi Stock Viewer</title>
+  <meta name="description" content="Fast mobile stock lookup by SKU or Model" />
+  <style>
+    /* ========== THEME ========== */
+    :root{
+      --brand:#d32f2f;          /* header background */
+      --bg:#ffffff;             /* page background */
+      --card:#f8f9fb;           /* card background */
+      --ink:#1f2937;            /* main text */
+      --muted:#6b7280;          /* secondary text */
+      --ok:#2e7d32;             /* in-stock color */
+      --warn:#b91c1c;           /* out-of-stock color */
+      --accent:#1565c0;         /* price color */
+      --radius:14px;
+    }
+
+    /* ========== RESET ========== */
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); background:var(--bg); }
+
+    /* ========== HEADER ========== */
+    header{
+      position: sticky; top: 0; z-index: 10;
+      background:var(--brand); color:#fff; padding:14px 16px 10px;
+      box-shadow:0 2px 6px rgba(0,0,0,.15);
+    }
+    header .title { font-weight:700; font-size:18px; letter-spacing:.2px; }
+    header .sub { font-size:12px; opacity:.9; margin-top:2px; }
+
+    /* ========== CONTROLS ========== */
+    .controls{ padding:10px 12px; display:flex; gap:8px; align-items:center; background:#fff; border-bottom:1px solid #eee; }
+    .search{ flex:1; position:relative; }
+    .search input{
+      width:100%; padding:12px 40px 12px 12px; font-size:16px;
+      border:1px solid #e5e7eb; border-radius:10px; outline:none;
+    }
+    .clear-btn{
+      position:absolute; right:6px; top:50%; transform:translateY(-50%);
+      border:none; background:transparent; font-size:18px; cursor:pointer; color:#9ca3af; padding:6px;
+    }
+    .toggle{ display:flex; align-items:center; gap:8px; font-size:14px; color:var(--muted); }
+
+    /* ========== STATS ========== */
+    .stats{ padding:6px 14px; font-size:13px; color:var(--muted); }
+
+    /* ========== LIST/CARDS ========== */
+    .list{ padding:8px 10px 18px; display:grid; gap:10px; }
+    .card{
+      background:var(--card); border-radius:var(--radius);
+      padding:12px; box-shadow:0 1px 3px rgba(0,0,0,.08);
+    }
+    .row1 { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+    .sku { font-weight:700; font-size:15px; }
+    .badge{
+      font-size:12px; padding:4px 8px; border-radius:999px; font-weight:600;
+      color:#fff; white-space:nowrap;
+    }
+    .ok{ background:var(--ok); }
+    .no{ background:var(--warn); }
+    .model{ margin:6px 0 8px; font-size:14px; color:var(--ink); }
+    .meta{ display:flex; gap:16px; font-size:14px; }
+    .price{ color:var(--accent); font-weight:700; }
+    .stock{ font-weight:700; }
+
+    /* Desktop polish */
+    @media(min-width:760px){
+      .list{ grid-template-columns: repeat(2, 1fr); }
+      .card{ padding:14px; }
+    }
+    @media(min-width:1100px){
+      .list{ grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ========== FOOTER/ERROR ========== */
+    .footer{ padding:20px 14px; text-align:center; color:var(--muted); font-size:12px; }
+    .error{ color:var(--warn); padding:12px 14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">Kaspi Stock Viewer</div>
+    <div class="sub">Search by <b>SKU</b> or <b>Model</b>. Data auto-loads from price.xml.</div>
+  </header>
+
+  <div class="controls">
+    <div class="search">
+      <input id="q" type="text" placeholder="Type SKU (e.g., 4513812) or Model (e.g., TE-CD 18/40)..." autocomplete="off" />
+      <button class="clear-btn" id="clear" title="Clear">✕</button>
+    </div>
+    <label class="toggle">
+      <input type="checkbox" id="onlyInStock" />
+      In stock only
+    </label>
+  </div>
+
+  <div class="stats" id="stats">Loading…</div>
+  <div class="error" id="error" hidden></div>
+  <div class="list" id="list"></div>
+  <div class="footer" id="footer"></div>
+
+  <script>
+    // ======= CONFIG =======
+    // Folder layout: /price.xml (root) and /app/index.html → use ../price.xml
+    const XML_URL = "../price.xml";
+
+    // Format 123456 → "123 456 ₸"
+    function formatTenge(n){
+      if (isNaN(n)) return n;
+      return new Intl.NumberFormat("ru-KZ", { maximumFractionDigits: 0 })
+               .format(Number(n)) + " ₸";
+    }
+
+    // Debounce for nicer typing
+    function debounce(fn, ms=120){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), ms); }; }
+
+    // DOM
+    const q = document.getElementById("q");
+    const clearBtn = document.getElementById("clear");
+    const onlyInStock = document.getElementById("onlyInStock");
+    const list = document.getElementById("list");
+    const stats = document.getElementById("stats");
+    const errorBox = document.getElementById("error");
+    const footer = document.getElementById("footer");
+
+    let OFFERS = [];
+
+    async function fetchXML(){
+      // Cache-bust to always get the freshest file from Pages/CDN
+      const url = XML_URL + "?t=" + Date.now();
+      const res = await fetch(url, { cache: "no-store" });
+      if(!res.ok) throw new Error("HTTP " + res.status);
+      const txt = await res.text();
+      const xml = new DOMParser().parseFromString(txt, "application/xml");
+      // Check parse errors
+      if (xml.querySelector("parsererror")) throw new Error("XML parse error");
+      return xml;
+    }
+
+    function parseOffers(xml){
+      const offers = Array.from(xml.getElementsByTagName("offer")).map(offer=>{
+        const sku = offer.getAttribute("sku") || "";
+        const modelTag = offer.getElementsByTagName("model")[0];
+        const model = (modelTag?.textContent || "").trim();
+
+        // First <availability> node
+        const av = offer.getElementsByTagName("availability")[0];
+        const available = (av?.getAttribute("available") || "no").toLowerCase() === "yes";
+        const stock = Number(av?.getAttribute("stockCount") || "0");
+
+        const priceTag = offer.getElementsByTagName("price")[0];
+        const price = Number((priceTag?.textContent || "0").replace(/[^\d]/g,""));
+
+        return { sku, model, available, stock, price };
+      });
+      // Put in-stock items first by default
+      return offers.sort((a,b)=> (b.available - a.available) || (b.stock - a.stock) || a.model.localeCompare(b.model));
+    }
+
+    function render(){
+      const term = q.value.trim().toLowerCase();
+      const filt = OFFERS.filter(o=>{
+        const hit = o.sku.includes(term) || o.model.toLowerCase().includes(term);
+        return hit && (!onlyInStock.checked || o.stock > 0);
+      });
+
+      list.innerHTML = "";
+      if (filt.length === 0){
+        list.innerHTML = `<div class="card"><div class="model">No results. Try another SKU/model.</div></div>`;
+      } else {
+        for(const o of filt){
+          const badgeClass = o.stock>0 ? "ok" : "no";
+          const badgeText  = o.stock>0 ? "In stock" : "Out of stock";
+          list.insertAdjacentHTML("beforeend", `
+            <div class="card">
+              <div class="row1">
+                <div class="sku">SKU: ${o.sku}</div>
+                <span class="badge ${badgeClass}">${badgeText}</span>
+              </div>
+              <div class="model">${o.model}</div>
+              <div class="meta">
+                <div class="stock">Qty: ${o.stock}</div>
+                <div class="price">${formatTenge(o.price)}</div>
+              </div>
+            </div>
+          `);
+        }
+      }
+      stats.textContent = `Showing ${filt.length} / ${OFFERS.length} items ${onlyInStock.checked ? "(in-stock only)" : ""}`;
+    }
+
+    async function init(){
+      try{
+        stats.textContent = "Loading…";
+        const xml = await fetchXML();
+        OFFERS = parseOffers(xml);
+        render();
+        const now = new Date();
+        footer.textContent = "Fetched at " + now.toLocaleString();
+        errorBox.hidden = true;
+      }catch(err){
+        errorBox.hidden = false;
+        errorBox.textContent = "Failed to load price.xml: " + err.message;
+        stats.textContent = "—";
+      }
+    }
+
+    // Events
+    q.addEventListener("input", debounce(render, 80));
+    onlyInStock.addEventListener("change", render);
+    clearBtn.addEventListener("click", ()=>{ q.value=""; render(); q.focus(); });
+
+    // Auto-refresh every 30 minutes (optional, safe for phones)
+    setInterval(init, 30*60*1000);
+
+    // Start
+    init();
+  </script>
+</body>
+</html>
