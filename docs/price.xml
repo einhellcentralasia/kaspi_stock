@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-09-23 03:47">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-09-23 05:35">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -62,14 +62,14 @@
     <offer sku="4510034">
       <model>Аккум. Винтоверт Einhell TE-CI 18/1 Li-Solo (4510034)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="18"/>
+        <availability available="yes" storeId="PP1" stockCount="17"/>
       </availabilities>
       <price>37400</price>
     </offer>
     <offer sku="4331220">
       <model>Аккум. Циркулярная пила Einhell TE-CS 18/150 Li - Solo (4331220)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="14"/>
+        <availability available="yes" storeId="PP1" stockCount="13"/>
       </availabilities>
       <price>45400</price>
     </offer>
@@ -272,14 +272,14 @@
     <offer sku="4511489">
       <model>Аккумулятор Einhell 2x18V 4,0Ah PXC-Twinpack CB 1 (4511489)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="41"/>
+        <availability available="yes" storeId="PP1" stockCount="40"/>
       </availabilities>
       <price>39000</price>
     </offer>
     <offer sku="4512097">
       <model>Зарядное устройство в комплекте Einhell 18V 2,5Ah PXC Starter Kit (4512097)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="213"/>
+        <availability available="yes" storeId="PP1" stockCount="212"/>
       </availabilities>
       <price>12900</price>
     </offer>
@@ -314,7 +314,7 @@
     <offer sku="4513900">
       <model>Аккум. Перфоратор SDS-Plus Einhell HEROCCO 18/20 - Solo (4513900)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="23"/>
+        <availability available="yes" storeId="PP1" stockCount="22"/>
       </availabilities>
       <price>82900</price>
     </offer>
@@ -440,7 +440,7 @@
     <offer sku="4431160">
       <model>Аккум. Углошлифмашина Einhell AXXIO 36/230 Q - Solo (4431160)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="14"/>
+        <availability available="yes" storeId="PP1" stockCount="13"/>
       </availabilities>
       <price>136000</price>
     </offer>
@@ -461,7 +461,7 @@
     <offer sku="4465190">
       <model>Аккум. Реноватор Einhell TP-MG 18 Li BL - Solo (4465190)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="10"/>
+        <availability available="yes" storeId="PP1" stockCount="9"/>
       </availabilities>
       <price>88400</price>
     </offer>
@@ -601,7 +601,7 @@
     <offer sku="4514205">
       <model>Аккум. Ударный Шуруповерт Einhell TP-CD 18/60 Li- i BL Solo (4514205)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="120"/>
+        <availability available="yes" storeId="PP1" stockCount="119"/>
       </availabilities>
       <price>68000</price>
     </offer>
@@ -685,7 +685,7 @@
     <offer sku="4510070">
       <model>Аккум. Гайковерт Einhell IMPAXXO 18/450 - Solo (4510070)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="49"/>
+        <availability available="yes" storeId="PP1" stockCount="48"/>
       </availabilities>
       <price>105500</price>
     </offer>
@@ -783,7 +783,7 @@
     <offer sku="4321200">
       <model>Аккум. Лобзик Einhell TE-JS 18/80 Li-Solo (4321200)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="16"/>
+        <availability available="yes" storeId="PP1" stockCount="15"/>
       </availabilities>
       <price>42800</price>
     </offer>
@@ -1308,7 +1308,7 @@
     <offer sku="4512102">
       <model>Зарядное устройство в комплекте Einhell 2x2 Power X-Quattrocharger 4A (4512102)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="yes" storeId="PP1" stockCount="4"/>
       </availabilities>
       <price>65000</price>
     </offer>
@@ -1448,7 +1448,7 @@
     <offer sku="4257944">
       <model>Сетев. Перфоратор SDS-Plus Einhell TE-RH 32 4F Kit (4257944)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="32"/>
+        <availability available="yes" storeId="PP1" stockCount="31"/>
       </availabilities>
       <price>102000</price>
     </offer>
@@ -1735,7 +1735,7 @@
     <offer sku="4430890">
       <model>Сетев. Углошлифмашина Einhell TE-AG 125/1010 CE Q (4430890)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="36"/>
+        <availability available="yes" storeId="PP1" stockCount="35"/>
       </availabilities>
       <price>51000</price>
     </offer>
@@ -2876,7 +2876,7 @@
     <offer sku="4300385">
       <model>Сетев. Торцовочная пила Einhell TC-SM 254 (4300385)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>170000</price>
     </offer>
@@ -4549,7 +4549,7 @@
     <offer sku="2342460">
       <model>Сетев. Пылесос Einhell TE-VC 2025 SACL (2342460)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="77"/>
+        <availability available="yes" storeId="PP1" stockCount="76"/>
       </availabilities>
       <price>115600</price>
     </offer>
@@ -7482,7 +7482,7 @@
     <offer sku="3430400">
       <model>Сетев. Садовый измельчитель Einhell GC-KS 2540 CB (3430400)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>122400</price>
     </offer>
@@ -8672,7 +8672,7 @@
     <offer sku="52640">
       <model>Сверло HARDCUT, 4,0 мм kwb by Einhell (52640)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="109"/>
+        <availability available="yes" storeId="PP1" stockCount="108"/>
       </availabilities>
       <price>3400</price>
     </offer>
@@ -8714,7 +8714,7 @@
     <offer sku="52800">
       <model>Набор сверл HARDCUT, 5-10 мм, 4 шт., в коробке kwb by Einhell (52800)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="14"/>
       </availabilities>
       <price>11700</price>
     </offer>
@@ -8889,7 +8889,7 @@
     <offer sku="100500">
       <model>Магнитный держатель бит Impact kwb by Einhell (100500)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="12"/>
+        <availability available="yes" storeId="PP1" stockCount="11"/>
       </availabilities>
       <price>9400</price>
     </offer>
@@ -9008,14 +9008,14 @@
     <offer sku="118100">
       <model>Угловая отвертка kwb by Einhell (118100)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="92"/>
+        <availability available="yes" storeId="PP1" stockCount="91"/>
       </availabilities>
       <price>6000</price>
     </offer>
     <offer sku="118410">
       <model>Угловая насадка для бит и сверл, 90 градусов kwb by Einhell (118410)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="93"/>
+        <availability available="yes" storeId="PP1" stockCount="92"/>
       </availabilities>
       <price>12000</price>
     </offer>
@@ -9127,7 +9127,7 @@
     <offer sku="247302">
       <model>Зубило SDS 20x250 мм kwb by Einhell (247302)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="14"/>
       </availabilities>
       <price>7300</price>
     </offer>
@@ -9204,7 +9204,7 @@
     <offer sku="258640">
       <model>Сверло HI-NOX HSS M2 для металла 4 мм, в блистере kwb by Einhell (258640)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="93"/>
+        <availability available="yes" storeId="PP1" stockCount="92"/>
       </availabilities>
       <price>1800</price>
     </offer>
@@ -9330,7 +9330,7 @@
     <offer sku="258819">
       <model>Набор сверл HI-NOX HSS, 19 шт. kwb by Einhell (258819)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="12"/>
+        <availability available="yes" storeId="PP1" stockCount="11"/>
       </availabilities>
       <price>39800</price>
     </offer>
@@ -9442,7 +9442,7 @@
     <offer sku="421104">
       <model>Сверло HSS 1/4", HEX, 4 мм, в упаковке kwb by Einhell (421104)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="92"/>
+        <availability available="yes" storeId="PP1" stockCount="91"/>
       </availabilities>
       <price>1000</price>
     </offer>
@@ -9561,7 +9561,7 @@
     <offer sku="493900">
       <model>Фреза для сверления, HSS, 6 мм, в упаковке kwb by Einhell (493900)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="99"/>
+        <availability available="yes" storeId="PP1" stockCount="98"/>
       </availabilities>
       <price>4700</price>
     </offer>
@@ -9680,7 +9680,7 @@
     <offer sku="511472">
       <model>Сверло по дереву, 12 мм, в упаковке kwb by Einhell (511472)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="89"/>
+        <availability available="yes" storeId="PP1" stockCount="88"/>
       </availabilities>
       <price>1900</price>
     </offer>
@@ -9736,7 +9736,7 @@
     <offer sku="511904">
       <model>Сверло по твёрдой древесине FCE, 4 мм kwb by Einhell (511904)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="90"/>
+        <availability available="yes" storeId="PP1" stockCount="89"/>
       </availabilities>
       <price>2200</price>
     </offer>
@@ -9827,7 +9827,7 @@
     <offer sku="513106">
       <model>Набор зенкеров, 6 мм, в упаковке kwb by Einhell (513106)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="92"/>
+        <availability available="yes" storeId="PP1" stockCount="91"/>
       </availabilities>
       <price>4000</price>
     </offer>
@@ -9841,7 +9841,7 @@
     <offer sku="513904">
       <model>Сверло по дереву 1/4", шестигранное, 4 мм kwb by Einhell (513904)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="92"/>
+        <availability available="yes" storeId="PP1" stockCount="91"/>
       </availabilities>
       <price>900</price>
     </offer>
@@ -9869,7 +9869,7 @@
     <offer sku="525000">
       <model>Коническое сверло HSS, 3-14 мм, в упаковке kwb by Einhell (525000)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="13"/>
+        <availability available="yes" storeId="PP1" stockCount="12"/>
       </availabilities>
       <price>7000</price>
     </offer>
@@ -9897,7 +9897,7 @@
     <offer sku="525830">
       <model>Ступенчатое сверло HSS, 6-30 мм, в упаковке kwb by Einhell (525830)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="31"/>
+        <availability available="yes" storeId="PP1" stockCount="30"/>
       </availabilities>
       <price>20200</price>
     </offer>
@@ -10240,7 +10240,7 @@
     <offer sku="706400">
       <model>Набор сверл Форстнера, 15-35 мм, HoKa, 5 шт. kwb by Einhell (706400)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="23"/>
+        <availability available="yes" storeId="PP1" stockCount="22"/>
       </availabilities>
       <price>52100</price>
     </offer>
@@ -10282,7 +10282,7 @@
     <offer sku="706430">
       <model>Скоростное сверло Форстнера, 30 мм kwb by Einhell (706430)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="113"/>
+        <availability available="yes" storeId="PP1" stockCount="112"/>
       </availabilities>
       <price>12200</price>
     </offer>
@@ -10387,7 +10387,7 @@
     <offer sku="706530">
       <model>Сверло Форстнера, 30 мм kwb by Einhell (706530)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="92"/>
+        <availability available="yes" storeId="PP1" stockCount="91"/>
       </availabilities>
       <price>5500</price>
     </offer>
@@ -10611,7 +10611,7 @@
     <offer sku="789540">
       <model>Алмазный диск Multi, 125 мм kwb by Einhell (789540)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="14"/>
       </availabilities>
       <price>12900</price>
     </offer>
