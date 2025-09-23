@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-09-23 09:35">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-09-23 11:26">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -139,7 +139,7 @@
     <offer sku="4020415">
       <model>Аккум. Компрессор Einhell TE-AC 36/150 Li OF-Solo (4020415)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>119000</price>
     </offer>
@@ -265,14 +265,14 @@
     <offer sku="2342167">
       <model>Сетев. Пылесос Einhell TC-VC 1820 S (2342167)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="98"/>
+        <availability available="yes" storeId="PP1" stockCount="97"/>
       </availabilities>
       <price>32600</price>
     </offer>
     <offer sku="4511489">
       <model>Аккумулятор Einhell 2x18V 4,0Ah PXC-Twinpack CB 1 (4511489)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="40"/>
+        <availability available="yes" storeId="PP1" stockCount="38"/>
       </availabilities>
       <price>39000</price>
     </offer>
@@ -1014,7 +1014,7 @@
     <offer sku="4419360">
       <model>Аккум. Гравер Einhell TE-MT 18/34 Li Solo (4419360)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="7"/>
+        <availability available="yes" storeId="PP1" stockCount="6"/>
       </availabilities>
       <price>57800</price>
     </offer>
@@ -2771,7 +2771,7 @@
     <offer sku="4540012">
       <model>Кейс Einhell Plastic Compartments Set (4540012)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="yes" storeId="PP1" stockCount="4"/>
       </availabilities>
       <price>7500</price>
     </offer>
@@ -2834,7 +2834,7 @@
     <offer sku="4300370">
       <model>Сетев. Торцовочная пила Einhell TC-MS 216 (4300370)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="36"/>
+        <availability available="yes" storeId="PP1" stockCount="35"/>
       </availabilities>
       <price>74800</price>
     </offer>
@@ -6194,7 +6194,7 @@
     <offer sku="4501761">
       <model>Аккум. Цепная пила Einhell GE-LC 18/25 Li-Solo (4501761)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>74800</price>
     </offer>
@@ -6663,7 +6663,7 @@
     <offer sku="3414114">
       <model>Ручн. Газонокосилка Einhell GC-HM 300 (3414114)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="153"/>
+        <availability available="yes" storeId="PP1" stockCount="152"/>
       </availabilities>
       <price>52300</price>
     </offer>
@@ -9589,7 +9589,7 @@
     <offer sku="494600">
       <model>Ротационный напильник, 13x35 мм, в упаковке kwb by Einhell (494600)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="14"/>
       </availabilities>
       <price>2200</price>
     </offer>
@@ -10331,7 +10331,7 @@
     <offer sku="706510">
       <model>Сверло Форстнера, 10 мм kwb by Einhell (706510)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="90"/>
+        <availability available="yes" storeId="PP1" stockCount="89"/>
       </availabilities>
       <price>3700</price>
     </offer>
@@ -10660,7 +10660,7 @@
     <offer sku="928420">
       <model>Струбцина столярная, дерево, 200x110 мм kwb by Einhell (928420)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="8"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>10200</price>
     </offer>
