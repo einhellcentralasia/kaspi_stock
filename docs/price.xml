@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-09-26 11:26">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-09-26 13:42">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -160,7 +160,7 @@
     <offer sku="4258508">
       <model>Сетев. Перфоратор SDS-Plus Einhell TE-RH 32-1600 4F (4258508)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="yes" storeId="PP1" stockCount="1"/>
       </availabilities>
       <price>68200</price>
     </offer>
@@ -265,7 +265,7 @@
     <offer sku="2342167">
       <model>Сетев. Пылесос Einhell TC-VC 1820 S (2342167)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="94"/>
+        <availability available="yes" storeId="PP1" stockCount="93"/>
       </availabilities>
       <price>32600</price>
     </offer>
@@ -650,7 +650,7 @@
     <offer sku="4514220">
       <model>Аккум. Ударный Шуруповерт Einhell TE-CD 18/2 Li-i +22 (1x2,5 Ah) (4514220)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="230"/>
+        <availability available="yes" storeId="PP1" stockCount="229"/>
       </availabilities>
       <price>69900</price>
     </offer>
@@ -755,14 +755,14 @@
     <offer sku="4350410">
       <model>Аккум. Фрезер Einhell TP-RO 18 Set Li BL - Solo (4350410)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="17"/>
+        <availability available="yes" storeId="PP1" stockCount="16"/>
       </availabilities>
       <price>118200</price>
     </offer>
     <offer sku="4331207">
       <model>Аккум. Циркулярная пила Einhell TE-CS 18/165-1 Li - Solo (4331207)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="8"/>
+        <availability available="yes" storeId="PP1" stockCount="7"/>
       </availabilities>
       <price>67900</price>
     </offer>
@@ -1406,7 +1406,7 @@
     <offer sku="4514155">
       <model>Крепление на стену для аккумуляторов Einhell PXC Battery Mounting Gadget (4514155)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="51"/>
+        <availability available="yes" storeId="PP1" stockCount="50"/>
       </availabilities>
       <price>2800</price>
     </offer>
@@ -4850,7 +4850,7 @@
     <offer sku="4140740">
       <model>Сетев. Мойка высокого давления Einhell TC-HP 90 (4140740)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="72"/>
+        <availability available="yes" storeId="PP1" stockCount="71"/>
       </availabilities>
       <price>62100</price>
     </offer>
@@ -8875,7 +8875,7 @@
     <offer sku="100300">
       <model>Быстросменный держатель бит 1/4” SB kwb by Einhell (100300)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="12"/>
+        <availability available="yes" storeId="PP1" stockCount="11"/>
       </availabilities>
       <price>8600</price>
     </offer>
@@ -9358,7 +9358,7 @@
     <offer sku="292500">
       <model>Патрон для сверла HEX, 6,5 мм, 1/4'' kwb by Einhell (292500)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="11"/>
+        <availability available="yes" storeId="PP1" stockCount="10"/>
       </availabilities>
       <price>3400</price>
     </offer>
@@ -9708,14 +9708,14 @@
     <offer sku="511476">
       <model>Сверло по дереву, 16 мм, в упаковке kwb by Einhell (511476)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="93"/>
+        <availability available="yes" storeId="PP1" stockCount="91"/>
       </availabilities>
       <price>3400</price>
     </offer>
     <offer sku="511477">
       <model>Сверло по дереву, 17 мм, в упаковке kwb by Einhell (511477)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="91"/>
+        <availability available="yes" storeId="PP1" stockCount="90"/>
       </availabilities>
       <price>4700</price>
     </offer>
