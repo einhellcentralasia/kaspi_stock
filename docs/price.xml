@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-09-30 09:34">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-09-30 11:28">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -97,7 +97,7 @@
     <offer sku="4430971">
       <model>Сетев. Углошлифмашина Einhell TC-AG 125/850 (4430971)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="77"/>
+        <availability available="yes" storeId="PP1" stockCount="75"/>
       </availabilities>
       <price>20800</price>
     </offer>
@@ -265,21 +265,21 @@
     <offer sku="2342167">
       <model>Сетев. Пылесос Einhell TC-VC 1820 S (2342167)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="91"/>
+        <availability available="yes" storeId="PP1" stockCount="89"/>
       </availabilities>
       <price>32600</price>
     </offer>
     <offer sku="4511489">
       <model>Аккумулятор Einhell 2x18V 4,0Ah PXC-Twinpack CB 1 (4511489)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="28"/>
+        <availability available="yes" storeId="PP1" stockCount="27"/>
       </availabilities>
       <price>39000</price>
     </offer>
     <offer sku="4512097">
       <model>Зарядное устройство в комплекте Einhell 18V 2,5Ah PXC Starter Kit (4512097)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="202"/>
+        <availability available="yes" storeId="PP1" stockCount="195"/>
       </availabilities>
       <price>12900</price>
     </offer>
@@ -538,7 +538,7 @@
     <offer sku="4513914">
       <model>Аккум. Шуруповерт Einhell TC-CD 18/35 Li (1x1,5 Ah) (4513914)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="26"/>
+        <availability available="yes" storeId="PP1" stockCount="24"/>
       </availabilities>
       <price>42500</price>
     </offer>
@@ -566,7 +566,7 @@
     <offer sku="4513995">
       <model>Аккум. Шуруповерт Einhell TE-CD 18/40 Li BL (2x2,0Ah) (4513995)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="41"/>
+        <availability available="yes" storeId="PP1" stockCount="40"/>
       </availabilities>
       <price>98600</price>
     </offer>
@@ -629,7 +629,7 @@
     <offer sku="4513940">
       <model>Аккум. Ударный Шуруповерт Einhell TP-CD 18/50 Li-i BL (2x2,0Ah) (4513940)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="13"/>
       </availabilities>
       <price>115600</price>
     </offer>
@@ -650,7 +650,7 @@
     <offer sku="4514220">
       <model>Аккум. Ударный Шуруповерт Einhell TE-CD 18/2 Li-i +22 (1x2,5 Ah) (4514220)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="229"/>
+        <availability available="yes" storeId="PP1" stockCount="228"/>
       </availabilities>
       <price>69900</price>
     </offer>
@@ -1098,7 +1098,7 @@
     <offer sku="4020467">
       <model>Аккум. Компрессор Einhell PRESSITO 18/21 - Solo (4020467)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="7"/>
+        <availability available="yes" storeId="PP1" stockCount="6"/>
       </availabilities>
       <price>49900</price>
     </offer>
@@ -1161,7 +1161,7 @@
     <offer sku="2347180">
       <model>Аккум. Пылесос Einhell TE-SV 18 Li-Solo (2347180)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="32"/>
+        <availability available="yes" storeId="PP1" stockCount="29"/>
       </availabilities>
       <price>88400</price>
     </offer>
@@ -1406,7 +1406,7 @@
     <offer sku="4514155">
       <model>Крепление на стену для аккумуляторов Einhell PXC Battery Mounting Gadget (4514155)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="50"/>
+        <availability available="yes" storeId="PP1" stockCount="48"/>
       </availabilities>
       <price>2800</price>
     </offer>
@@ -1896,7 +1896,7 @@
     <offer sku="4513660">
       <model>Аккум. Шуруповерт Einhell TH-CD 12-2 Li (4513660)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="32"/>
+        <availability available="yes" storeId="PP1" stockCount="31"/>
       </availabilities>
       <price>39800</price>
     </offer>
@@ -2267,7 +2267,7 @@
     <offer sku="4326180">
       <model>Сетев. Сабельная пила Einhell TE-AP 950 E (4326180)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="3"/>
+        <availability available="yes" storeId="PP1" stockCount="2"/>
       </availabilities>
       <price>53400</price>
     </offer>
@@ -2785,7 +2785,7 @@
     <offer sku="4540014">
       <model>Кейс с колесиками Einhell E-Case L with wheels (4540014)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>61200</price>
     </offer>
@@ -2918,7 +2918,7 @@
     <offer sku="4300877">
       <model>Сетев. Торцовочная пила Einhell TE-SM 10 L Dual (4300877)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="8"/>
+        <availability available="yes" storeId="PP1" stockCount="6"/>
       </availabilities>
       <price>175600</price>
     </offer>
@@ -4990,7 +4990,7 @@
     <offer sku="3410940">
       <model>Аккум. Кусторез Einhell GC-CH 18/40 Li Solo (3410940)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="6"/>
+        <availability available="yes" storeId="PP1" stockCount="5"/>
       </availabilities>
       <price>40800</price>
     </offer>
@@ -6110,7 +6110,7 @@
     <offer sku="3410866">
       <model>Аккум. Высоторез Einhell GE-HH 18/45 Li T-Solo (3410866)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>96800</price>
     </offer>
@@ -6733,7 +6733,7 @@
     <offer sku="3405075">
       <model>Леска для триммера Einhell Spare Spool GC-ET 2522 (3405075)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="140"/>
+        <availability available="yes" storeId="PP1" stockCount="138"/>
       </availabilities>
       <price>6800</price>
     </offer>
@@ -9071,7 +9071,7 @@
     <offer sku="143100">
       <model>Тестер напряжения с отверткой, CE-TUEV 150 kwb by Einhell (143100)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>2200</price>
     </offer>
@@ -10352,7 +10352,7 @@
     <offer sku="706516">
       <model>Сверло Форстнера, 16 мм kwb by Einhell (706516)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="92"/>
+        <availability available="yes" storeId="PP1" stockCount="91"/>
       </availabilities>
       <price>4200</price>
     </offer>
