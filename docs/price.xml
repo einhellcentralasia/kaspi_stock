@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-10-03 07:18">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-10-03 09:19">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -69,7 +69,7 @@
     <offer sku="4331220">
       <model>Аккум. Циркулярная пила Einhell TE-CS 18/150 Li - Solo (4331220)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="4"/>
+        <availability available="yes" storeId="PP1" stockCount="3"/>
       </availabilities>
       <price>45400</price>
     </offer>
@@ -314,7 +314,7 @@
     <offer sku="4513900">
       <model>Аккум. Перфоратор SDS-Plus Einhell HEROCCO 18/20 - Solo (4513900)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="13"/>
+        <availability available="yes" storeId="PP1" stockCount="11"/>
       </availabilities>
       <price>82900</price>
     </offer>
@@ -1007,7 +1007,7 @@
     <offer sku="4522250">
       <model>Аккум. Пистолет для герметика Einhell TE-SG 18/10 Li - Solo (4522250)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="7"/>
+        <availability available="yes" storeId="PP1" stockCount="6"/>
       </availabilities>
       <price>67900</price>
     </offer>
@@ -1385,14 +1385,14 @@
     <offer sku="4511618">
       <model>Аккумулятор Einhell 18V 3,0Ah SEALED PXC Plus A2 (4511618)</model>
       <availabilities>
-        <availability available="no" storeId="PP1" stockCount="0"/>
+        <availability available="yes" storeId="PP1" stockCount="7"/>
       </availabilities>
       <price>35400</price>
     </offer>
     <offer sku="4511627">
       <model>Аккумулятор Einhell 18V 4,0Ah SEALED PXC Plus (4511627)</model>
       <availabilities>
-        <availability available="no" storeId="PP1" stockCount="0"/>
+        <availability available="yes" storeId="PP1" stockCount="3"/>
       </availabilities>
       <price>40800</price>
     </offer>
@@ -1609,7 +1609,7 @@
     <offer sku="4258550">
       <model>Сетев. Строительный миксер Einhell TC-MX 1400-2 E (4258550)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="3"/>
+        <availability available="yes" storeId="PP1" stockCount="2"/>
       </availabilities>
       <price>68000</price>
     </offer>
@@ -5179,7 +5179,7 @@
     <offer sku="3413200">
       <model>Аккум. Газонокосилка Einhell GP-CM 36/47 S HW Li (4x4,0Ah) (3413200)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="yes" storeId="PP1" stockCount="3"/>
       </availabilities>
       <price>459000</price>
     </offer>
@@ -8557,6 +8557,13 @@
       </availabilities>
       <price>0</price>
     </offer>
+    <offer sku="4540037">
+      <model></model>
+      <availabilities>
+        <availability available="no" storeId="PP1" stockCount="0"/>
+      </availabilities>
+      <price>0</price>
+    </offer>
     <offer sku="11620">
       <model>Детектор электрических проводов/металла/дерева kwb by Einhell (11620)</model>
       <availabilities>
@@ -8763,7 +8770,7 @@
     <offer sku="67430">
       <model>Строительный угольник, 300 мм, Pro kwb by Einhell (67430)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="12"/>
+        <availability available="yes" storeId="PP1" stockCount="11"/>
       </availabilities>
       <price>9100</price>
     </offer>
@@ -10702,7 +10709,7 @@
     <offer sku="982340">
       <model>Профессиональная подтягивающая рейка с наковальней, 450 мм kwb by Einhell (982340)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="17"/>
+        <availability available="yes" storeId="PP1" stockCount="16"/>
       </availabilities>
       <price>13900</price>
     </offer>
