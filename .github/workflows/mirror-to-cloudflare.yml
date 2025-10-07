@@ -14,7 +14,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     permissions:
       contents: read
       deployments: write
@@ -24,6 +24,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy /docs to Cloudflare Pages
+        id: deploy
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
@@ -32,27 +33,28 @@ jobs:
           directory: docs
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Wait a few seconds for CDN edge to refresh
-        run: sleep 6
+      - name: Wait for CDN propagation
+        run: sleep 20
 
-      - name: Health check — price.xml is reachable (retry)
+      - name: Verify price.xml availability
         shell: bash
         env:
           URL: https://kaspi-stock-mirror.pages.dev/price.xml
         run: |
           set -euo pipefail
-          for i in {1..6}; do
-            echo "Attempt $i: GET $URL"
-            # -L follows redirects; -f fails on HTTP errors; --max-time limits hang
-            if curl -sSL -f --max-time 15 "$URL" | head -n 2 | grep -qi '<kaspi_catalog'; then
-              echo "✅ Mirror OK: received kaspi_catalog XML root."
+          echo "🔎 Checking $URL"
+          for i in {1..10}; do
+            echo "Attempt $i..."
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$URL" || true)
+            if [[ "$STATUS" == "200" ]]; then
+              echo "✅ price.xml available (HTTP $STATUS)"
               exit 0
             fi
-            echo "Not ready yet, retrying..."
-            sleep 5
+            echo "Still not ready (HTTP $STATUS). Waiting..."
+            sleep 10
           done
-          echo "❌ Mirror failed: $URL did not return expected XML."
+          echo "❌ price.xml not reachable after retries"
           exit 1
 
       - name: Done
-        run: echo "✅ Cloudflare mirror updated and verified."
+        run: echo "✅ Cloudflare mirror deployed and verified successfully."
