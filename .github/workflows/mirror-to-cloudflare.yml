@@ -1,61 +1,80 @@
-name: Build Kaspi XML
+name: Mirror XML to Cloudflare Pages
 
 on:
-  # Runs automatically on schedule + can be run manually.
-  schedule:
-    - cron: "*/30 * * * *"   # every 30 min; adjust if you want
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/price.xml'
+      - 'docs/index.html'
   workflow_dispatch: {}
 
 concurrency:
-  group: build-xml-${{ github.ref }}
+  group: mirror-to-cf-${{ github.ref }}
   cancel-in-progress: true
 
-permissions:
-  contents: write   # needed to push price.xml
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    permissions:
+      contents: read
+      deployments: write
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
+      - name: Detect changes in /docs
+        id: changes
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Generate docs/price.xml
-        env:
-          TENANT_ID:        ${{ secrets.TENANT_ID }}
-          CLIENT_ID:        ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET:    ${{ secrets.CLIENT_SECRET }}
-          SP_SITE_HOSTNAME: ${{ secrets.SP_SITE_HOSTNAME }}
-          SP_SITE_PATH:     ${{ secrets.SP_SITE_PATH }}
-          SP_XLSX_PATH:     ${{ secrets.SP_XLSX_PATH }}
-          SP_TABLE_NAME:    ${{ secrets.SP_TABLE_NAME }}
-          COMPANY_NAME:     ${{ secrets.COMPANY_NAME }}
-          MERCHANT_ID:      ${{ secrets.MERCHANT_ID }}
-          KASPI_STORE_ID:   ${{ secrets.KASPI_STORE_ID }}
-        run: |
-          python generate_xml.py
-
-      - name: Commit updated XML (only if changed)
-        run: |
-          set -e
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/price.xml docs/index.html || true
-          if git diff --cached --quiet; then
-            echo "No changes in docs/ – nothing to commit."
-            exit 0
+          if git diff --quiet HEAD^ HEAD -- docs/; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "🟡 No changes detected in /docs — skipping deployment."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Changes detected — proceeding with deployment."
           fi
-          git commit -m "Update price.xml"
-          git push
+
+      - name: Deploy /docs to Cloudflare Pages
+        if: steps.changes.outputs.changed == 'true'
+        id: deploy
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: ${{ secrets.CF_PROJECT_NAME }}
+          directory: docs
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Wait for CDN propagation
+        if: steps.changes.outputs.changed == 'true'
+        run: sleep 20
+
+      - name: Verify price.xml availability
+        if: steps.changes.outputs.changed == 'true'
+        shell: bash
+        env:
+          URL: https://kaspi-stock-mirror.pages.dev/price.xml
+        run: |
+          set -euo pipefail
+          echo "🔎 Checking $URL"
+          for i in {1..10}; do
+            echo "Attempt $i..."
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$URL" || true)
+            if [[ "$STATUS" == "200" ]]; then
+              echo "✅ price.xml available (HTTP $STATUS)"
+              exit 0
+            fi
+            echo "Still not ready (HTTP $STATUS). Waiting..."
+            sleep 10
+          done
+          echo "❌ price.xml not reachable after retries"
+          exit 1
+
+      - name: Done
+        if: steps.changes.outputs.changed == 'true'
+        run: echo "✅ Cloudflare mirror deployed and verified successfully."
+
+      - name: Skipped
+        if: steps.changes.outputs.changed != 'true'
+        run: echo "⏭️ No changes to deploy — workflow finished cleanly."
