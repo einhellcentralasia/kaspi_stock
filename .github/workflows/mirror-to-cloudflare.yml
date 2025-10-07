@@ -44,16 +44,25 @@ jobs:
             fi
           fi
 
-      - name: Deploy /docs to Cloudflare Pages
+      - name: Deploy /docs to Cloudflare Pages (Wrangler v3, with retry)
         if: steps.gate.outputs.changed == 'true'
-        id: deploy
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: ${{ secrets.CF_PROJECT_NAME }}
-          directory: docs
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          set -e
+          npm install -g wrangler@3
+          for attempt in 1 2 3; do
+            echo "Deploy attempt $attempt..."
+            if wrangler pages deploy docs --project-name="${{ secrets.CF_PROJECT_NAME }}" --branch=main; then
+              echo "✅ Deploy succeeded."
+              exit 0
+            fi
+            echo "⚠️ Deploy failed, retrying in 10s..."
+            sleep 10
+          done
+          echo "❌ Deploy failed after retries."
+          exit 1
 
       - name: Wait for CDN propagation
         if: steps.gate.outputs.changed == 'true'
