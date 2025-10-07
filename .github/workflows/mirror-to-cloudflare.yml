@@ -1,80 +1,61 @@
-name: Mirror XML to Cloudflare Pages
+name: Build Kaspi XML
 
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'docs/price.xml'
-      - 'docs/index.html'
+  # Runs automatically on schedule + can be run manually.
+  schedule:
+    - cron: "*/30 * * * *"   # every 30 min; adjust if you want
   workflow_dispatch: {}
 
 concurrency:
-  group: mirror-to-cf-${{ github.ref }}
+  group: build-xml-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: write   # needed to push price.xml
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    permissions:
-      contents: read
-      deployments: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Detect changes in /docs
-        id: changes
-        run: |
-          if git diff --quiet HEAD^ HEAD -- docs/; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "🟡 No changes detected in /docs — skipping deployment."
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "✅ Changes detected — proceeding with deployment."
-          fi
-
-      - name: Deploy /docs to Cloudflare Pages
-        if: steps.changes.outputs.changed == 'true'
-        id: deploy
-        uses: cloudflare/pages-action@v1
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: ${{ secrets.CF_PROJECT_NAME }}
-          directory: docs
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          python-version: "3.11"
 
-      - name: Wait for CDN propagation
-        if: steps.changes.outputs.changed == 'true'
-        run: sleep 20
-
-      - name: Verify price.xml availability
-        if: steps.changes.outputs.changed == 'true'
-        shell: bash
-        env:
-          URL: https://kaspi-stock-mirror.pages.dev/price.xml
+      - name: Install dependencies
         run: |
-          set -euo pipefail
-          echo "🔎 Checking $URL"
-          for i in {1..10}; do
-            echo "Attempt $i..."
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$URL" || true)
-            if [[ "$STATUS" == "200" ]]; then
-              echo "✅ price.xml available (HTTP $STATUS)"
-              exit 0
-            fi
-            echo "Still not ready (HTTP $STATUS). Waiting..."
-            sleep 10
-          done
-          echo "❌ price.xml not reachable after retries"
-          exit 1
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Done
-        if: steps.changes.outputs.changed == 'true'
-        run: echo "✅ Cloudflare mirror deployed and verified successfully."
+      - name: Generate docs/price.xml
+        env:
+          TENANT_ID:        ${{ secrets.TENANT_ID }}
+          CLIENT_ID:        ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET:    ${{ secrets.CLIENT_SECRET }}
+          SP_SITE_HOSTNAME: ${{ secrets.SP_SITE_HOSTNAME }}
+          SP_SITE_PATH:     ${{ secrets.SP_SITE_PATH }}
+          SP_XLSX_PATH:     ${{ secrets.SP_XLSX_PATH }}
+          SP_TABLE_NAME:    ${{ secrets.SP_TABLE_NAME }}
+          COMPANY_NAME:     ${{ secrets.COMPANY_NAME }}
+          MERCHANT_ID:      ${{ secrets.MERCHANT_ID }}
+          KASPI_STORE_ID:   ${{ secrets.KASPI_STORE_ID }}
+        run: |
+          python generate_xml.py
 
-      - name: Skipped
-        if: steps.changes.outputs.changed != 'true'
-        run: echo "⏭️ No changes to deploy — workflow finished cleanly."
+      - name: Commit updated XML (only if changed)
+        run: |
+          set -e
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/price.xml docs/index.html || true
+          if git diff --cached --quiet; then
+            echo "No changes in docs/ – nothing to commit."
+            exit 0
+          fi
+          git commit -m "Update price.xml"
+          git push
