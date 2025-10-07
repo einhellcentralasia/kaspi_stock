@@ -1,11 +1,12 @@
 name: Mirror XML to Cloudflare Pages
 
 on:
-  workflow_dispatch: {}
   push:
     branches: [ main ]
     paths:
-      - 'docs/**'
+      - 'docs/price.xml'
+      - 'docs/index.html'
+  workflow_dispatch: {}
 
 concurrency:
   group: mirror-to-cf-${{ github.ref }}
@@ -20,10 +21,22 @@ jobs:
       deployments: write
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Detect changes in /docs
+        id: changes
+        run: |
+          if git diff --quiet HEAD^ HEAD -- docs/; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "🟡 No changes detected in /docs — skipping deployment."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Changes detected — proceeding with deployment."
+          fi
+
       - name: Deploy /docs to Cloudflare Pages
+        if: steps.changes.outputs.changed == 'true'
         id: deploy
         uses: cloudflare/pages-action@v1
         with:
@@ -34,9 +47,11 @@ jobs:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Wait for CDN propagation
+        if: steps.changes.outputs.changed == 'true'
         run: sleep 20
 
       - name: Verify price.xml availability
+        if: steps.changes.outputs.changed == 'true'
         shell: bash
         env:
           URL: https://kaspi-stock-mirror.pages.dev/price.xml
@@ -57,4 +72,9 @@ jobs:
           exit 1
 
       - name: Done
+        if: steps.changes.outputs.changed == 'true'
         run: echo "✅ Cloudflare mirror deployed and verified successfully."
+
+      - name: Skipped
+        if: steps.changes.outputs.changed != 'true'
+        run: echo "⏭️ No changes to deploy — workflow finished cleanly."
