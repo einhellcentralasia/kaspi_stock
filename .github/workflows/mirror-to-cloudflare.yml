@@ -1,24 +1,29 @@
 name: Mirror XML to Cloudflare Pages
 
 on:
+  workflow_dispatch: {}   # allow manual runs
   push:
     branches: [ main ]
     paths:
-      - 'docs/price.xml'
-      - 'docs/index.html'   # optional; safe to include
+      - 'docs/**'         # run on any change under /docs
+
+concurrency:
+  group: mirror-to-cf-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
       deployments: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Deploy the whole /docs folder (contains price.xml) to Cloudflare Pages
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy /docs to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
@@ -26,3 +31,6 @@ jobs:
           projectName: ${{ secrets.CF_PROJECT_NAME }}
           directory: docs
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Done
+        run: echo "✅ Cloudflare mirror updated successfully."
