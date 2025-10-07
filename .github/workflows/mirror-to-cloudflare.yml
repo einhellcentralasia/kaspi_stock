@@ -1,11 +1,11 @@
 name: Mirror XML to Cloudflare Pages
 
 on:
-  workflow_dispatch: {}   # allow manual runs
+  workflow_dispatch: {}
   push:
     branches: [ main ]
     paths:
-      - 'docs/**'         # run on any change under /docs
+      - 'docs/**'
 
 concurrency:
   group: mirror-to-cf-${{ github.ref }}
@@ -14,7 +14,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     permissions:
       contents: read
       deployments: write
@@ -32,5 +32,27 @@ jobs:
           directory: docs
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Wait a few seconds for CDN edge to refresh
+        run: sleep 6
+
+      - name: Health check — price.xml is reachable (retry)
+        shell: bash
+        env:
+          URL: https://kaspi-stock-mirror.pages.dev/price.xml
+        run: |
+          set -euo pipefail
+          for i in {1..6}; do
+            echo "Attempt $i: GET $URL"
+            # -L follows redirects; -f fails on HTTP errors; --max-time limits hang
+            if curl -sSL -f --max-time 15 "$URL" | head -n 2 | grep -qi '<kaspi_catalog'; then
+              echo "✅ Mirror OK: received kaspi_catalog XML root."
+              exit 0
+            fi
+            echo "Not ready yet, retrying..."
+            sleep 5
+          done
+          echo "❌ Mirror failed: $URL did not return expected XML."
+          exit 1
+
       - name: Done
-        run: echo "✅ Cloudflare mirror updated successfully."
+        run: echo "✅ Cloudflare mirror updated and verified."
