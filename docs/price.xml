@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-10-10 05:19">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-10-10 07:19">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -83,7 +83,7 @@
     <offer sku="4326300">
       <model>Аккум. Сабельная пила Einhell TE-AP 18/22 Li-Solo (4326300)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="18"/>
+        <availability available="yes" storeId="PP1" stockCount="19"/>
       </availabilities>
       <price>39900</price>
     </offer>
@@ -265,21 +265,21 @@
     <offer sku="2342167">
       <model>Сетев. Пылесос Einhell TC-VC 1820 S (2342167)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="77"/>
+        <availability available="yes" storeId="PP1" stockCount="78"/>
       </availabilities>
       <price>32600</price>
     </offer>
     <offer sku="4511489">
       <model>Аккумулятор Einhell 2x18V 4,0Ah PXC-Twinpack CB 1 (4511489)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="37"/>
+        <availability available="yes" storeId="PP1" stockCount="51"/>
       </availabilities>
       <price>39000</price>
     </offer>
     <offer sku="4512097">
       <model>Зарядное устройство в комплекте Einhell 18V 2,5Ah PXC Starter Kit (4512097)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="285"/>
+        <availability available="yes" storeId="PP1" stockCount="289"/>
       </availabilities>
       <price>12900</price>
     </offer>
@@ -685,7 +685,7 @@
     <offer sku="4510070">
       <model>Аккум. Гайковерт Einhell IMPAXXO 18/450 - Solo (4510070)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="41"/>
+        <availability available="yes" storeId="PP1" stockCount="42"/>
       </availabilities>
       <price>105500</price>
     </offer>
@@ -2806,7 +2806,7 @@
     <offer sku="4540020">
       <model>Кейс + пластиковые перегородки Einhell E-Case S-F incl. dividers (4540020)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="yes" storeId="PP1" stockCount="3"/>
       </availabilities>
       <price>30600</price>
     </offer>
@@ -2988,7 +2988,7 @@
     <offer sku="4340515">
       <model>Сетев. Настольная пила Einhell TC-TS 2225 U (4340515)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="16"/>
+        <availability available="yes" storeId="PP1" stockCount="15"/>
       </availabilities>
       <price>163200</price>
     </offer>
@@ -5942,7 +5942,7 @@
     <offer sku="3433555">
       <model>Аккум. Воздуходувка Einhell GP-LB 18/200 Li E-Solo (3433555)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="4"/>
+        <availability available="yes" storeId="PP1" stockCount="5"/>
       </availabilities>
       <price>61200</price>
     </offer>
@@ -6257,7 +6257,7 @@
     <offer sku="3408300">
       <model>Аккум. Секатор Einhell GE-LS 18 Li-Solo (3408300)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="yes" storeId="PP1" stockCount="2"/>
       </availabilities>
       <price>61200</price>
     </offer>
@@ -6369,7 +6369,7 @@
     <offer sku="4173771">
       <model>Аккум. Катушка без поливного шланга Einhell GE-HR 18/30 WH Li-Solo (4173771)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="yes" storeId="PP1" stockCount="3"/>
       </availabilities>
       <price>108800</price>
     </offer>
@@ -8840,7 +8840,7 @@
     <offer sku="67430">
       <model>Строительный угольник, 300 мм, Pro kwb by Einhell (67430)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="9"/>
+        <availability available="yes" storeId="PP1" stockCount="10"/>
       </availabilities>
       <price>9100</price>
     </offer>
@@ -8868,7 +8868,7 @@
     <offer sku="89530">
       <model>Стальная вата, 200 г, крупная, номер 03 kwb by Einhell (89530)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="9"/>
+        <availability available="yes" storeId="PP1" stockCount="10"/>
       </availabilities>
       <price>3200</price>
     </offer>
@@ -9757,7 +9757,7 @@
     <offer sku="511472">
       <model>Сверло по дереву, 12 мм, в упаковке kwb by Einhell (511472)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="86"/>
+        <availability available="yes" storeId="PP1" stockCount="87"/>
       </availabilities>
       <price>1900</price>
     </offer>
