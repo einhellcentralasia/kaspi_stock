@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-10-15 13:32">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-10-15 15:19">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -272,7 +272,7 @@
     <offer sku="4511489">
       <model>Аккумулятор Einhell 2x18V 4,0Ah PXC-Twinpack CB 1 (4511489)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="50"/>
+        <availability available="yes" storeId="PP1" stockCount="47"/>
       </availabilities>
       <price>39000</price>
     </offer>
@@ -286,7 +286,7 @@
     <offer sku="4512042">
       <model>Зарядное устройство в комплекте Einhell 18V 4,0Ah PXC Starter Kit 1 (4512042)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="281"/>
+        <availability available="yes" storeId="PP1" stockCount="277"/>
       </availabilities>
       <price>23400</price>
     </offer>
@@ -440,7 +440,7 @@
     <offer sku="4431160">
       <model>Аккум. Углошлифмашина Einhell AXXIO 36/230 Q - Solo (4431160)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="8"/>
+        <availability available="yes" storeId="PP1" stockCount="7"/>
       </availabilities>
       <price>136000</price>
     </offer>
@@ -1231,7 +1231,7 @@
     <offer sku="2347120">
       <model>Аккум. Пылесос Einhell TE-VC 18 Li-Solo (2347120)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="9"/>
+        <availability available="yes" storeId="PP1" stockCount="8"/>
       </availabilities>
       <price>32900</price>
     </offer>
@@ -4990,7 +4990,7 @@
     <offer sku="3410940">
       <model>Аккум. Кусторез Einhell GC-CH 18/40 Li Solo (3410940)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="4"/>
+        <availability available="yes" storeId="PP1" stockCount="3"/>
       </availabilities>
       <price>40800</price>
     </offer>
@@ -5942,7 +5942,7 @@
     <offer sku="3433555">
       <model>Аккум. Воздуходувка Einhell GP-LB 18/200 Li E-Solo (3433555)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="yes" storeId="PP1" stockCount="2"/>
       </availabilities>
       <price>61200</price>
     </offer>
@@ -6019,7 +6019,7 @@
     <offer sku="3410920">
       <model>Аккум. Кусторез Einhell ARCURRA 18/55 (3410920)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="13"/>
+        <availability available="yes" storeId="PP1" stockCount="11"/>
       </availabilities>
       <price>68000</price>
     </offer>
@@ -6124,7 +6124,7 @@
     <offer sku="3410805">
       <model>Аккум. Высоторез Einhell GE-HC 18 Li T Kit (1x3,0Ah) (3410805)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="yes" storeId="PP1" stockCount="4"/>
       </availabilities>
       <price>183600</price>
     </offer>
@@ -7482,7 +7482,7 @@
     <offer sku="3430400">
       <model>Сетев. Садовый измельчитель Einhell GC-KS 2540 CB (3430400)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>122400</price>
     </offer>
