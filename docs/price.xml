@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-10-17 11:16">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-10-17 13:28">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -48,14 +48,14 @@
     <offer sku="4513939">
       <model>Аккум. Шуруповерт Einhell TE-CD 18/40-1 Li (2x1,5 Ah) (4513939)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="200"/>
+        <availability available="yes" storeId="PP1" stockCount="195"/>
       </availabilities>
       <price>54900</price>
     </offer>
     <offer sku="4513942">
       <model>Аккум. Ударный Шуруповерт Einhell TP-CD 18/50 Li-i BL-Solo (4513942)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="30"/>
+        <availability available="yes" storeId="PP1" stockCount="29"/>
       </availabilities>
       <price>47600</price>
     </offer>
@@ -1315,7 +1315,7 @@
     <offer sku="4512103">
       <model>Зарядное устройство в комплекте Einhell Power X-Fastcharger 4A (4512103)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="106"/>
+        <availability available="yes" storeId="PP1" stockCount="105"/>
       </availabilities>
       <price>22700</price>
     </offer>
@@ -1350,7 +1350,7 @@
     <offer sku="4511437">
       <model>Аккумулятор Einhell 5,2 Ah Power X-Change Plus (4511437)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="35"/>
+        <availability available="yes" storeId="PP1" stockCount="34"/>
       </availabilities>
       <price>47600</price>
     </offer>
@@ -1406,7 +1406,7 @@
     <offer sku="4514155">
       <model>Крепление на стену для аккумуляторов Einhell PXC Battery Mounting Gadget (4514155)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="38"/>
+        <availability available="yes" storeId="PP1" stockCount="36"/>
       </availabilities>
       <price>2800</price>
     </offer>
@@ -1735,7 +1735,7 @@
     <offer sku="4430890">
       <model>Сетев. Углошлифмашина Einhell TE-AG 125/1010 CE Q (4430890)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="33"/>
+        <availability available="yes" storeId="PP1" stockCount="31"/>
       </availabilities>
       <price>51000</price>
     </offer>
@@ -6663,7 +6663,7 @@
     <offer sku="3414114">
       <model>Ручн. Газонокосилка Einhell GC-HM 300 (3414114)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="151"/>
+        <availability available="yes" storeId="PP1" stockCount="148"/>
       </availabilities>
       <price>52300</price>
     </offer>
@@ -8042,7 +8042,7 @@
     <offer sku="2030365">
       <model>Стартовые провода Einhell BT-BO 25/1 A LED SP (2030365)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="48"/>
+        <availability available="yes" storeId="PP1" stockCount="46"/>
       </availabilities>
       <price>18300</price>
     </offer>
@@ -8854,7 +8854,7 @@
     <offer sku="67450">
       <model>Строительный угольник, 500 мм, Pro kwb by Einhell (67450)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="9"/>
+        <availability available="yes" storeId="PP1" stockCount="8"/>
       </availabilities>
       <price>11500</price>
     </offer>
@@ -9694,7 +9694,7 @@
     <offer sku="494900">
       <model>Ротационный напильник, 15x30 мм, в упаковке kwb by Einhell (494900)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="14"/>
       </availabilities>
       <price>2400</price>
     </offer>
@@ -10555,7 +10555,7 @@
     <offer sku="757900">
       <model>Направляющая для сверла, в упаковке kwb by Einhell (757900)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>4800</price>
     </offer>
