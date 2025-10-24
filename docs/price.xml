@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-10-23 15:21">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-10-24 03:33">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -272,7 +272,7 @@
     <offer sku="4511489">
       <model>Аккумулятор Einhell 2x18V 4,0Ah PXC-Twinpack CB 1 (4511489)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="14"/>
+        <availability available="yes" storeId="PP1" stockCount="9"/>
       </availabilities>
       <price>39000</price>
     </offer>
@@ -916,7 +916,7 @@
     <offer sku="4514130">
       <model>Аккум. Фонарь Einhell TC-CL 18 Li H-Solo (4514130)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="29"/>
+        <availability available="yes" storeId="PP1" stockCount="28"/>
       </availabilities>
       <price>25100</price>
     </offer>
@@ -1119,7 +1119,7 @@
     <offer sku="4514120">
       <model>USB-адаптер Einhell TC-CP 18 Li USB-Solo (4514120)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="69"/>
+        <availability available="yes" storeId="PP1" stockCount="68"/>
       </availabilities>
       <price>9900</price>
     </offer>
@@ -1406,7 +1406,7 @@
     <offer sku="4514155">
       <model>Крепление на стену для аккумуляторов Einhell PXC Battery Mounting Gadget (4514155)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="35"/>
+        <availability available="yes" storeId="PP1" stockCount="30"/>
       </availabilities>
       <price>2800</price>
     </offer>
@@ -1714,7 +1714,7 @@
     <offer sku="4430870">
       <model>Сетев. Углошлифмашина Einhell TE-AG 230 (4430870)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>78200</price>
     </offer>
@@ -2750,7 +2750,7 @@
     <offer sku="4530054">
       <model>Кейс Einhell E-Box L70/35 (4530054)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="6"/>
+        <availability available="yes" storeId="PP1" stockCount="5"/>
       </availabilities>
       <price>47600</price>
     </offer>
@@ -2834,7 +2834,7 @@
     <offer sku="4300370">
       <model>Сетев. Торцовочная пила Einhell TC-MS 216 (4300370)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="29"/>
+        <availability available="yes" storeId="PP1" stockCount="28"/>
       </availabilities>
       <price>74800</price>
     </offer>
@@ -2869,7 +2869,7 @@
     <offer sku="4300380">
       <model>Сетев. Торцовочная пила Einhell TC-SM 216 (4300380)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="3"/>
+        <availability available="yes" storeId="PP1" stockCount="2"/>
       </availabilities>
       <price>115600</price>
     </offer>
@@ -8868,7 +8868,7 @@
     <offer sku="89510">
       <model>Стальная вата, 200 г, средняя, номер 01 kwb by Einhell (89510)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="13"/>
+        <availability available="yes" storeId="PP1" stockCount="12"/>
       </availabilities>
       <price>3700</price>
     </offer>
