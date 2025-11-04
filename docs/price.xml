@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-11-04 13:34">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-11-04 15:23">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -265,7 +265,7 @@
     <offer sku="2342167">
       <model>Сетев. Пылесос Einhell TC-VC 1820 S (2342167)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="18"/>
+        <availability available="yes" storeId="PP1" stockCount="16"/>
       </availabilities>
       <price>32600</price>
     </offer>
@@ -279,7 +279,7 @@
     <offer sku="4512097">
       <model>Зарядное устройство в комплекте Einhell 18V 2,5Ah PXC Starter Kit (4512097)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="223"/>
+        <availability available="yes" storeId="PP1" stockCount="221"/>
       </availabilities>
       <price>12900</price>
     </offer>
@@ -307,7 +307,7 @@
     <offer sku="4512143">
       <model>Зарядное устройство в комплекте Einhell 18V 4-6Ah &amp; 6A Boostcharger (4512143)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="235"/>
+        <availability available="yes" storeId="PP1" stockCount="234"/>
       </availabilities>
       <price>65000</price>
     </offer>
@@ -1161,7 +1161,7 @@
     <offer sku="2347180">
       <model>Аккум. Пылесос Einhell TE-SV 18 Li-Solo (2347180)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="18"/>
+        <availability available="yes" storeId="PP1" stockCount="17"/>
       </availabilities>
       <price>88400</price>
     </offer>
@@ -1560,7 +1560,7 @@
     <offer sku="4258682">
       <model>Сетев. Ударная дрель Einhell TC-ID 650 E (4258682)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="37"/>
+        <availability available="yes" storeId="PP1" stockCount="32"/>
       </availabilities>
       <price>29400</price>
     </offer>
@@ -2995,7 +2995,7 @@
     <offer sku="4340539">
       <model>Сетев. Настольная пила Einhell TE-CC 250 UF (4340539)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>299200</price>
     </offer>
@@ -8371,7 +8371,7 @@
     <offer sku="4431175">
       <model>Аккум. Углошлифмашина Einhell TP-AG 18/125 F Li BL - Solo (4431175)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="46"/>
+        <availability available="yes" storeId="PP1" stockCount="45"/>
       </availabilities>
       <price>85200</price>
     </offer>
@@ -8868,7 +8868,7 @@
     <offer sku="89510">
       <model>Стальная вата, 200 г, средняя, номер 01 kwb by Einhell (89510)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="8"/>
+        <availability available="yes" storeId="PP1" stockCount="7"/>
       </availabilities>
       <price>3700</price>
     </offer>
