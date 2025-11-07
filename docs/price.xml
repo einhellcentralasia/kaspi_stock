@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-11-06 15:23">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-11-07 03:43">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -2834,7 +2834,7 @@
     <offer sku="4300370">
       <model>Сетев. Торцовочная пила Einhell TC-MS 216 (4300370)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="27"/>
+        <availability available="yes" storeId="PP1" stockCount="26"/>
       </availabilities>
       <price>74800</price>
     </offer>
@@ -6432,7 +6432,7 @@
     <offer sku="3408035">
       <model>Аккум. Вентилятор Einhell GE-CF 18/2200 Li (3408035)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>34000</price>
     </offer>
@@ -8378,7 +8378,7 @@
     <offer sku="4514148">
       <model>USB-адаптер Einhell TC-CP 18 Li USB A/C-Solo (4514148)</model>
       <availabilities>
-        <availability available="no" storeId="PP1" stockCount="0"/>
+        <availability available="yes" storeId="PP1" stockCount="60"/>
       </availabilities>
       <price>13100</price>
     </offer>
@@ -8641,6 +8641,13 @@
       </availabilities>
       <price>0</price>
     </offer>
+    <offer sku="3408320">
+      <model></model>
+      <availabilities>
+        <availability available="no" storeId="PP1" stockCount="0"/>
+      </availabilities>
+      <price>0</price>
+    </offer>
     <offer sku="11620">
       <model>Детектор электрических проводов/металла/дерева kwb by Einhell (11620)</model>
       <availabilities>
@@ -8854,7 +8861,7 @@
     <offer sku="67450">
       <model>Строительный угольник, 500 мм, Pro kwb by Einhell (67450)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="7"/>
+        <availability available="yes" storeId="PP1" stockCount="6"/>
       </availabilities>
       <price>11500</price>
     </offer>
@@ -8868,7 +8875,7 @@
     <offer sku="89510">
       <model>Стальная вата, 200 г, средняя, номер 01 kwb by Einhell (89510)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="7"/>
+        <availability available="yes" storeId="PP1" stockCount="6"/>
       </availabilities>
       <price>3700</price>
     </offer>
@@ -8882,7 +8889,7 @@
     <offer sku="89560">
       <model>Стальная вата, 200 г, сверхмелкая, номер 000 kwb by Einhell (89560)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="14"/>
       </availabilities>
       <price>4500</price>
     </offer>
@@ -10191,7 +10198,7 @@
     <offer sku="689604">
       <model>Отвертка с Т-образной рукояткой, шестигранник, 4 мм kwb by Einhell (689604)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="yes" storeId="PP1" stockCount="1"/>
       </availabilities>
       <price>1800</price>
     </offer>
@@ -10786,7 +10793,7 @@
     <offer sku="982340">
       <model>Профессиональная подтягивающая рейка с наковальней, 450 мм kwb by Einhell (982340)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="14"/>
+        <availability available="yes" storeId="PP1" stockCount="13"/>
       </availabilities>
       <price>13900</price>
     </offer>
