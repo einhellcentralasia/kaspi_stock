@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-11-07 09:21">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-11-07 11:18">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -62,7 +62,7 @@
     <offer sku="4510034">
       <model>Аккум. Винтоверт Einhell TE-CI 18/1 Li-Solo (4510034)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="10"/>
+        <availability available="yes" storeId="PP1" stockCount="9"/>
       </availabilities>
       <price>37400</price>
     </offer>
@@ -279,7 +279,7 @@
     <offer sku="4512097">
       <model>Зарядное устройство в комплекте Einhell 18V 2,5Ah PXC Starter Kit (4512097)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="221"/>
+        <availability available="yes" storeId="PP1" stockCount="220"/>
       </availabilities>
       <price>12900</price>
     </offer>
@@ -986,7 +986,7 @@
     <offer sku="4520500">
       <model>Аккум. Технический фен Einhell TE-HA 18 Li - Solo (4520500)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="10"/>
+        <availability available="yes" storeId="PP1" stockCount="7"/>
       </availabilities>
       <price>49000</price>
     </offer>
@@ -1392,7 +1392,7 @@
     <offer sku="4511627">
       <model>Аккумулятор Einhell 18V 4,0Ah SEALED PXC Plus (4511627)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="6"/>
+        <availability available="yes" storeId="PP1" stockCount="5"/>
       </availabilities>
       <price>40800</price>
     </offer>
@@ -8378,7 +8378,7 @@
     <offer sku="4514148">
       <model>USB-адаптер Einhell TC-CP 18 Li USB A/C-Solo (4514148)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="60"/>
+        <availability available="yes" storeId="PP1" stockCount="58"/>
       </availabilities>
       <price>13100</price>
     </offer>
@@ -8686,21 +8686,21 @@
     <offer sku="16620">
       <model>Нож для отдыха с 4 битами отверток kwb by Einhell (16620)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>10600</price>
     </offer>
     <offer sku="20300">
       <model>Обрезной нож с двойным лезвием, 6 лезвий kwb by Einhell (20300)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="11"/>
+        <availability available="yes" storeId="PP1" stockCount="10"/>
       </availabilities>
       <price>13400</price>
     </offer>
     <offer sku="20310">
       <model>Лезвия для обрезного ножа, 6 шт. kwb by Einhell (20310)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="10"/>
+        <availability available="yes" storeId="PP1" stockCount="9"/>
       </availabilities>
       <price>6500</price>
     </offer>
@@ -8840,7 +8840,7 @@
     <offer sku="67250">
       <model>Комбинированный угольник, 250 мм kwb by Einhell (67250)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="9"/>
+        <availability available="yes" storeId="PP1" stockCount="8"/>
       </availabilities>
       <price>13300</price>
     </offer>
@@ -8861,7 +8861,7 @@
     <offer sku="67450">
       <model>Строительный угольник, 500 мм, Pro kwb by Einhell (67450)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="6"/>
+        <availability available="yes" storeId="PP1" stockCount="5"/>
       </availabilities>
       <price>11500</price>
     </offer>
@@ -9358,7 +9358,7 @@
     <offer sku="258670">
       <model>Сверло HI-NOX HSS M2 для металла 7 мм, в блистере kwb by Einhell (258670)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="151"/>
+        <availability available="yes" storeId="PP1" stockCount="150"/>
       </availabilities>
       <price>3700</price>
     </offer>
@@ -9372,7 +9372,7 @@
     <offer sku="258680">
       <model>Сверло HI-NOX HSS M2 для металла 8 мм, в блистере kwb by Einhell (258680)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="148"/>
+        <availability available="yes" storeId="PP1" stockCount="147"/>
       </availabilities>
       <price>4700</price>
     </offer>
@@ -9785,7 +9785,7 @@
     <offer sku="511474">
       <model>Сверло по дереву, 14 мм, в упаковке kwb by Einhell (511474)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="86"/>
+        <availability available="yes" storeId="PP1" stockCount="85"/>
       </availabilities>
       <price>2500</price>
     </offer>
@@ -10653,7 +10653,7 @@
     <offer sku="784212">
       <model>Линейка точная, 1220 мм kwb by Einhell (784212)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="yes" storeId="PP1" stockCount="1"/>
       </availabilities>
       <price>16100</price>
     </offer>
@@ -10667,7 +10667,7 @@
     <offer sku="784400">
       <model>Направляющая для машин, в упаковке kwb by Einhell (784400)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>4400</price>
     </offer>
@@ -10681,7 +10681,7 @@
     <offer sku="784600">
       <model>Направляющая для резки LM, в упаковке kwb by Einhell (784600)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>2500</price>
     </offer>
