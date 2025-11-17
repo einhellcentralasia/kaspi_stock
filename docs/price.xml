@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-11-17 09:26">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-11-17 11:18">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -20,14 +20,14 @@
     <offer sku="4465170">
       <model>Аккум. Реноватор Einhell TC-MG 18 Li-Solo (4465170)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="37"/>
+        <availability available="yes" storeId="PP1" stockCount="36"/>
       </availabilities>
       <price>29900</price>
     </offer>
     <offer sku="4513925">
       <model>Аккум. Шуруповерт Einhell TE-CD 18/40 Li-Solo (4513925)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="27"/>
+        <availability available="yes" storeId="PP1" stockCount="26"/>
       </availabilities>
       <price>27200</price>
     </offer>
@@ -62,14 +62,14 @@
     <offer sku="4510034">
       <model>Аккум. Винтоверт Einhell TE-CI 18/1 Li-Solo (4510034)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="7"/>
+        <availability available="yes" storeId="PP1" stockCount="4"/>
       </availabilities>
       <price>37400</price>
     </offer>
     <offer sku="4331220">
       <model>Аккум. Циркулярная пила Einhell TE-CS 18/150 Li - Solo (4331220)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="yes" storeId="PP1" stockCount="1"/>
       </availabilities>
       <price>45400</price>
     </offer>
@@ -97,7 +97,7 @@
     <offer sku="4430971">
       <model>Сетев. Углошлифмашина Einhell TC-AG 125/850 (4430971)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="62"/>
+        <availability available="yes" storeId="PP1" stockCount="60"/>
       </availabilities>
       <price>20800</price>
     </offer>
@@ -279,7 +279,7 @@
     <offer sku="4512097">
       <model>Зарядное устройство в комплекте Einhell 18V 2,5Ah PXC Starter Kit (4512097)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="202"/>
+        <availability available="yes" storeId="PP1" stockCount="188"/>
       </availabilities>
       <price>12900</price>
     </offer>
@@ -671,7 +671,7 @@
     <offer sku="4510030">
       <model>Аккум. Винтоверт Einhell TP-CI 18 Li BL - Solo (4510030)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>68000</price>
     </offer>
@@ -762,7 +762,7 @@
     <offer sku="4331207">
       <model>Аккум. Циркулярная пила Einhell TE-CS 18/165-1 Li - Solo (4331207)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="yes" storeId="PP1" stockCount="4"/>
       </availabilities>
       <price>67900</price>
     </offer>
@@ -986,7 +986,7 @@
     <offer sku="4520500">
       <model>Аккум. Технический фен Einhell TE-HA 18 Li - Solo (4520500)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="7"/>
+        <availability available="yes" storeId="PP1" stockCount="6"/>
       </availabilities>
       <price>49000</price>
     </offer>
@@ -1119,7 +1119,7 @@
     <offer sku="4514120">
       <model>USB-адаптер Einhell TC-CP 18 Li USB-Solo (4514120)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="66"/>
+        <availability available="yes" storeId="PP1" stockCount="65"/>
       </availabilities>
       <price>9900</price>
     </offer>
@@ -4150,7 +4150,7 @@
     <offer sku="4466154">
       <model>Сетев. Точильный станок Einhell TC-US 350 (4466154)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="14"/>
+        <availability available="yes" storeId="PP1" stockCount="13"/>
       </availabilities>
       <price>54400</price>
     </offer>
@@ -4297,7 +4297,7 @@
     <offer sku="4503139">
       <model>Сетев. Монтажная пила Einhell TC-MC 355/1 (4503139)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>115600</price>
     </offer>
@@ -4549,7 +4549,7 @@
     <offer sku="2342460">
       <model>Сетев. Пылесос Einhell TE-VC 2025 SACL (2342460)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="59"/>
+        <availability available="yes" storeId="PP1" stockCount="57"/>
       </availabilities>
       <price>115600</price>
     </offer>
@@ -8189,7 +8189,7 @@
     <offer sku="4512159">
       <model>Зарядное устройство в комплекте Einhell 4Ah PLUS PXC Starter Kit (4512159)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="137"/>
+        <availability available="yes" storeId="PP1" stockCount="136"/>
       </availabilities>
       <price>55100</price>
     </offer>
@@ -8868,14 +8868,14 @@
     <offer sku="89500">
       <model>Стальная вата, 200 г, мелкая, номер 00 kwb by Einhell (89500)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="14"/>
+        <availability available="yes" storeId="PP1" stockCount="13"/>
       </availabilities>
       <price>4100</price>
     </offer>
     <offer sku="89510">
       <model>Стальная вата, 200 г, средняя, номер 01 kwb by Einhell (89510)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="3"/>
+        <availability available="yes" storeId="PP1" stockCount="1"/>
       </availabilities>
       <price>3700</price>
     </offer>
@@ -9449,7 +9449,7 @@
     <offer sku="292500">
       <model>Патрон для сверла HEX, 6,5 мм, 1/4'' kwb by Einhell (292500)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="6"/>
+        <availability available="yes" storeId="PP1" stockCount="5"/>
       </availabilities>
       <price>3400</price>
     </offer>
@@ -9708,7 +9708,7 @@
     <offer sku="495000">
       <model>Ротационный напильник, 7-15x35 мм, в упаковке kwb by Einhell (495000)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="14"/>
       </availabilities>
       <price>2400</price>
     </offer>
@@ -9890,7 +9890,7 @@
     <offer sku="512450">
       <model>Удлинитель для сверл и бит 300 мм, в упаковке kwb by Einhell (512450)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="3"/>
+        <availability available="yes" storeId="PP1" stockCount="2"/>
       </availabilities>
       <price>5900</price>
     </offer>
@@ -10170,7 +10170,7 @@
     <offer sku="669215">
       <model>Отвертка Torx 15x80 мм с зажимом kwb by Einhell (669215)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="38"/>
+        <availability available="yes" storeId="PP1" stockCount="36"/>
       </availabilities>
       <price>3000</price>
     </offer>
