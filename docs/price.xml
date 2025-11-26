@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-11-26 07:20">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-11-26 09:24">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -209,7 +209,7 @@
     <offer sku="4321135">
       <model>Сетев. Лобзик Einhell TC-JS 60/1 (4321135)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="152"/>
+        <availability available="yes" storeId="PP1" stockCount="147"/>
       </availabilities>
       <price>19900</price>
     </offer>
@@ -265,7 +265,7 @@
     <offer sku="2342167">
       <model>Сетев. Пылесос Einhell TC-VC 1820 S (2342167)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="yes" storeId="PP1" stockCount="1"/>
       </availabilities>
       <price>32600</price>
     </offer>
@@ -293,7 +293,7 @@
     <offer sku="4512114">
       <model>Зарядное устройство в комплекте Einhell 5,2Ah &amp; 4A Fastcharger (4512114)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="152"/>
+        <availability available="yes" storeId="PP1" stockCount="151"/>
       </availabilities>
       <price>45500</price>
     </offer>
@@ -720,7 +720,7 @@
     <offer sku="4345400">
       <model>Аккум. Рубанок Einhell TE-PL 18/82 Li - Solo (4345400)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="7"/>
+        <availability available="yes" storeId="PP1" stockCount="6"/>
       </availabilities>
       <price>74800</price>
     </offer>
@@ -1392,7 +1392,7 @@
     <offer sku="4511627">
       <model>Аккумулятор Einhell 18V 4,0Ah SEALED PXC Plus (4511627)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="yes" storeId="PP1" stockCount="4"/>
       </availabilities>
       <price>40800</price>
     </offer>
@@ -4353,7 +4353,7 @@
     <offer sku="2260160">
       <model>Ручн. Лебедка Einhell TC-WI 500 (2260160)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>20400</price>
     </offer>
@@ -8686,7 +8686,7 @@
     <offer sku="14920">
       <model>Хобби-нож ручка с 6 лезвиями kwb by Einhell (14920)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="10"/>
+        <availability available="yes" storeId="PP1" stockCount="9"/>
       </availabilities>
       <price>4500</price>
     </offer>
@@ -10009,7 +10009,7 @@
     <offer sku="530300">
       <model>Набор глубиномеров, 3 шт., в упаковке kwb by Einhell (530300)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="10"/>
+        <availability available="yes" storeId="PP1" stockCount="9"/>
       </availabilities>
       <price>1900</price>
     </offer>
@@ -10135,7 +10135,7 @@
     <offer sku="605030">
       <model>Нейлоновая торцевая щетка, 22 мм, грубая kwb by Einhell (605030)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="12"/>
+        <availability available="yes" storeId="PP1" stockCount="11"/>
       </availabilities>
       <price>3700</price>
     </offer>
@@ -10646,7 +10646,7 @@
     <offer sku="784208">
       <model>Линейка точная, 800 мм kwb by Einhell (784208)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="yes" storeId="PP1" stockCount="1"/>
       </availabilities>
       <price>11400</price>
     </offer>
@@ -10702,7 +10702,7 @@
     <offer sku="784900">
       <model>Соединитель для линейки Line Master, в упаковке kwb by Einhell (784900)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="yes" storeId="PP1" stockCount="4"/>
       </availabilities>
       <price>5500</price>
     </offer>
@@ -10786,7 +10786,7 @@
     <offer sku="929300">
       <model>Плоскогубцы для люверсов с комплектом люверсов kwb by Einhell (929300)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="14"/>
+        <availability available="yes" storeId="PP1" stockCount="13"/>
       </availabilities>
       <price>5600</price>
     </offer>
