@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-01 09:30">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-01 11:19">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -174,7 +174,7 @@
     <offer sku="4258621">
       <model>Сетев. Ударная дрель Einhell TC-ID 550 E (4258621)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="58"/>
+        <availability available="yes" storeId="PP1" stockCount="56"/>
       </availabilities>
       <price>23300</price>
     </offer>
@@ -209,7 +209,7 @@
     <offer sku="4321135">
       <model>Сетев. Лобзик Einhell TC-JS 60/1 (4321135)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="147"/>
+        <availability available="yes" storeId="PP1" stockCount="144"/>
       </availabilities>
       <price>19900</price>
     </offer>
@@ -230,7 +230,7 @@
     <offer sku="4419169">
       <model>Сетев. Гравер Einhell TC-MG 135 E (4419169)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="25"/>
+        <availability available="yes" storeId="PP1" stockCount="23"/>
       </availabilities>
       <price>29800</price>
     </offer>
@@ -279,7 +279,7 @@
     <offer sku="4512097">
       <model>Зарядное устройство в комплекте Einhell 18V 2,5Ah PXC Starter Kit (4512097)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="175"/>
+        <availability available="yes" storeId="PP1" stockCount="171"/>
       </availabilities>
       <price>12900</price>
     </offer>
@@ -4549,7 +4549,7 @@
     <offer sku="2342460">
       <model>Сетев. Пылесос Einhell TE-VC 2025 SACL (2342460)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="54"/>
+        <availability available="yes" storeId="PP1" stockCount="52"/>
       </availabilities>
       <price>115600</price>
     </offer>
