@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-05 11:20">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-05 13:33">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -20,7 +20,7 @@
     <offer sku="4465170">
       <model>Аккум. Реноватор Einhell TC-MG 18 Li-Solo (4465170)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="33"/>
+        <availability available="yes" storeId="PP1" stockCount="32"/>
       </availabilities>
       <price>29900</price>
     </offer>
@@ -48,7 +48,7 @@
     <offer sku="4513939">
       <model>Аккум. Шуруповерт Einhell TE-CD 18/40-1 Li (2x1,5 Ah) (4513939)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="191"/>
+        <availability available="yes" storeId="PP1" stockCount="190"/>
       </availabilities>
       <price>54900</price>
     </offer>
@@ -83,7 +83,7 @@
     <offer sku="4326300">
       <model>Аккум. Сабельная пила Einhell TE-AP 18/22 Li-Solo (4326300)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="12"/>
+        <availability available="yes" storeId="PP1" stockCount="11"/>
       </availabilities>
       <price>39900</price>
     </offer>
@@ -230,7 +230,7 @@
     <offer sku="4419169">
       <model>Сетев. Гравер Einhell TC-MG 135 E (4419169)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="23"/>
+        <availability available="yes" storeId="PP1" stockCount="22"/>
       </availabilities>
       <price>29800</price>
     </offer>
@@ -279,7 +279,7 @@
     <offer sku="4512097">
       <model>Зарядное устройство в комплекте Einhell 18V 2,5Ah PXC Starter Kit (4512097)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="170"/>
+        <availability available="yes" storeId="PP1" stockCount="165"/>
       </availabilities>
       <price>12900</price>
     </offer>
@@ -349,7 +349,7 @@
     <offer sku="4514265">
       <model>Аккум. Перфоратор SDS-Plus Einhell TP-HD 18/26 Li BL - Solo (4514265)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="48"/>
+        <availability available="yes" storeId="PP1" stockCount="46"/>
       </availabilities>
       <price>118200</price>
     </offer>
@@ -1728,14 +1728,14 @@
     <offer sku="4430885">
       <model>Сетев. Углошлифмашина Einhell TE-AG 125/750 Kit (4430885)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="87"/>
+        <availability available="yes" storeId="PP1" stockCount="85"/>
       </availabilities>
       <price>37400</price>
     </offer>
     <offer sku="4430890">
       <model>Сетев. Углошлифмашина Einhell TE-AG 125/1010 CE Q (4430890)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="25"/>
+        <availability available="yes" storeId="PP1" stockCount="23"/>
       </availabilities>
       <price>51000</price>
     </offer>
@@ -2008,7 +2008,7 @@
     <offer sku="4259955">
       <model>Насадка для шуруповерта по гипсокартону Einhell Magazine Attachment (4259955)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="40"/>
+        <availability available="yes" storeId="PP1" stockCount="38"/>
       </availabilities>
       <price>23800</price>
     </offer>
@@ -2064,7 +2064,7 @@
     <offer sku="4350730">
       <model>Сетев. Штроборез Einhell TC-MA 1300 (4350730)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="34"/>
+        <availability available="yes" storeId="PP1" stockCount="32"/>
       </availabilities>
       <price>79000</price>
     </offer>
@@ -2827,14 +2827,14 @@
     <offer sku="4300295">
       <model>Сетев. Торцовочная пила Einhell TC-MS 2112 (4300295)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="28"/>
+        <availability available="yes" storeId="PP1" stockCount="27"/>
       </availabilities>
       <price>68000</price>
     </offer>
     <offer sku="4300370">
       <model>Сетев. Торцовочная пила Einhell TC-MS 216 (4300370)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="23"/>
+        <availability available="yes" storeId="PP1" stockCount="22"/>
       </availabilities>
       <price>74800</price>
     </offer>
@@ -2904,7 +2904,7 @@
     <offer sku="4300866">
       <model>Сетев. Торцовочная пила Einhell TE-SM 8 L Dual (4300866)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="50"/>
+        <availability available="yes" storeId="PP1" stockCount="48"/>
       </availabilities>
       <price>149600</price>
     </offer>
@@ -2988,7 +2988,7 @@
     <offer sku="4340515">
       <model>Сетев. Настольная пила Einhell TC-TS 2225 U (4340515)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="13"/>
       </availabilities>
       <price>163200</price>
     </offer>
@@ -3317,7 +3317,7 @@
     <offer sku="4010495">
       <model>Сетев. Компрессор Einhell TC-AC 420/50/10 V (4010495)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="21"/>
+        <availability available="yes" storeId="PP1" stockCount="19"/>
       </availabilities>
       <price>204000</price>
     </offer>
@@ -3996,7 +3996,7 @@
     <offer sku="4520592">
       <model>Сетев. Сверлильный станок Einhell TC-BD 450 (4520592)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="42"/>
+        <availability available="yes" storeId="PP1" stockCount="41"/>
       </availabilities>
       <price>88400</price>
     </offer>
@@ -4864,7 +4864,7 @@
     <offer sku="4140760">
       <model>Сетев. Мойка высокого давления Einhell TE-HP 140 (4140760)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="55"/>
+        <availability available="yes" storeId="PP1" stockCount="53"/>
       </availabilities>
       <price>129000</price>
     </offer>
@@ -8294,7 +8294,7 @@
     <offer sku="4258478">
       <model>Сетев. Перфоратор SDS-Plus Einhell TC-RH 1600 (4258478)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="39"/>
+        <availability available="yes" storeId="PP1" stockCount="37"/>
       </availabilities>
       <price>78600</price>
     </offer>
@@ -8308,7 +8308,7 @@
     <offer sku="4261010">
       <model>Аккум. Шуруповерт для гипсокартона Einhell TP-DY 18 Li BL - Solo (4261010)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="33"/>
+        <availability available="yes" storeId="PP1" stockCount="32"/>
       </availabilities>
       <price>78600</price>
     </offer>
@@ -8336,7 +8336,7 @@
     <offer sku="4331225">
       <model>Аккум. Циркулярная пила Einhell TP-CS 18/165 Li BL - Solo (4331225)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="66"/>
+        <availability available="yes" storeId="PP1" stockCount="64"/>
       </availabilities>
       <price>99600</price>
     </offer>
@@ -8371,7 +8371,7 @@
     <offer sku="4431175">
       <model>Аккум. Углошлифмашина Einhell TP-AG 18/125 F Li BL - Solo (4431175)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="41"/>
+        <availability available="yes" storeId="PP1" stockCount="39"/>
       </availabilities>
       <price>85200</price>
     </offer>
@@ -8875,7 +8875,7 @@
     <offer sku="89500">
       <model>Стальная вата, 200 г, мелкая, номер 00 kwb by Einhell (89500)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="11"/>
+        <availability available="yes" storeId="PP1" stockCount="10"/>
       </availabilities>
       <price>4100</price>
     </offer>
@@ -9862,7 +9862,7 @@
     <offer sku="511908">
       <model>Сверло по твёрдой древесине FCE, 8 мм kwb by Einhell (511908)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="88"/>
+        <availability available="yes" storeId="PP1" stockCount="87"/>
       </availabilities>
       <price>5500</price>
     </offer>
@@ -10863,70 +10863,70 @@
     <offer sku="300004">
       <model>Пластиковая болванка в виде аккумулятора Einhell Dummy battery 18V 4,0 PLUS Ah (300004)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
     <offer sku="300009">
       <model>Пластиковая болванка в виде аккумулятора Einhell Dummy battery 18V 4,0Ah Sealed (300009)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
     <offer sku="300008">
       <model>Пластиковая болванка в виде аккумулятора Einhell Dummy battery 18V 3,0Ah Sealed (300008)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
     <offer sku="300005">
       <model>Пластиковая болванка в виде аккумулятора Einhell Dummy battery 18V 5,2 Ah (300005)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
     <offer sku="300001">
       <model>Пластиковая болванка в виде аккумулятора Einhell Dummy battery 18V 2,5 Ah (300001)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="4"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
     <offer sku="300000">
       <model>Пластиковая болванка в виде аккумулятора Einhell Dummy battery 18V 2,0 Ah (300000)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
     <offer sku="300003">
       <model>Пластиковая болванка в виде аккумулятора Einhell Dummy battery 18V 3,0 PLUS Ah (300003)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
     <offer sku="300002">
       <model>Пластиковая болванка в виде аккумулятора Einhell Dummy battery 18V 4,0 Ah (300002)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
     <offer sku="300006">
       <model>Пластиковая болванка в виде аккумулятора Einhell Dummy battery 18V 4-6,0 Ah (300006)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="4"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
     <offer sku="300007">
       <model>Пластиковая болванка в виде аккумулятора Einhell Dummy battery 18V 5-8,0 Ah (300007)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
