@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-09 11:20">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-09 13:10">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -153,7 +153,7 @@
     <offer sku="4258237">
       <model>Сетев. Перфоратор SDS-Plus Einhell TC-RH 900 (4258237)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="yes" storeId="PP1" stockCount="1"/>
       </availabilities>
       <price>54300</price>
     </offer>
@@ -286,7 +286,7 @@
     <offer sku="4512042">
       <model>Зарядное устройство в комплекте Einhell 18V 4,0Ah PXC Starter Kit 1 (4512042)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="210"/>
+        <availability available="yes" storeId="PP1" stockCount="209"/>
       </availabilities>
       <price>23400</price>
     </offer>
@@ -487,7 +487,7 @@
       <price>22400</price>
     </offer>
     <offer sku="4513833">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -571,7 +571,7 @@
       <price>98600</price>
     </offer>
     <offer sku="4514219">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -641,7 +641,7 @@
       <price>97600</price>
     </offer>
     <offer sku="4514206">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -655,7 +655,7 @@
       <price>69900</price>
     </offer>
     <offer sku="4514225">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -1019,7 +1019,7 @@
       <price>57800</price>
     </offer>
     <offer sku="4326551">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -1131,7 +1131,7 @@
       <price>81600</price>
     </offer>
     <offer sku="4140130">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -1231,7 +1231,7 @@
     <offer sku="2347120">
       <model>Аккум. Пылесос Einhell TE-VC 18 Li-Solo (2347120)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="7"/>
+        <availability available="yes" storeId="PP1" stockCount="6"/>
       </availabilities>
       <price>32900</price>
     </offer>
@@ -1887,7 +1887,7 @@
       <price>47600</price>
     </offer>
     <offer sku="4513594">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -1901,7 +1901,7 @@
       <price>39800</price>
     </offer>
     <offer sku="4513820">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -1915,14 +1915,14 @@
       <price>51700</price>
     </offer>
     <offer sku="4514250">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>39000</price>
     </offer>
     <offer sku="4513598">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -2552,14 +2552,14 @@
       <price>12900</price>
     </offer>
     <offer sku="2270105">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>37400</price>
     </offer>
     <offer sku="2270110">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -3287,7 +3287,7 @@
       <price>159800</price>
     </offer>
     <offer sku="4010450">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -3308,7 +3308,7 @@
       <price>204000</price>
     </offer>
     <offer sku="4010460">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -3364,7 +3364,7 @@
       <price>258400</price>
     </offer>
     <offer sku="4020650">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -4512,7 +4512,7 @@
       <price>81600</price>
     </offer>
     <offer sku="2342363">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -4764,7 +4764,7 @@
       <price>41400</price>
     </offer>
     <offer sku="2351250">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -4953,7 +4953,7 @@
       <price>74800</price>
     </offer>
     <offer sku="3413263">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -4974,7 +4974,7 @@
       <price>238000</price>
     </offer>
     <offer sku="3411125">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -4995,7 +4995,7 @@
       <price>40800</price>
     </offer>
     <offer sku="3410683">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -5023,7 +5023,7 @@
       <price>108800</price>
     </offer>
     <offer sku="2070111">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
@@ -6418,7 +6418,7 @@
     <offer sku="2071010">
       <model>Аккум. Компрессор Einhell CE-CC 18 Li-Solo (2071010)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="3"/>
+        <availability available="yes" storeId="PP1" stockCount="2"/>
       </availabilities>
       <price>37400</price>
     </offer>
@@ -9834,7 +9834,7 @@
     <offer sku="511904">
       <model>Сверло по твёрдой древесине FCE, 4 мм kwb by Einhell (511904)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="86"/>
+        <availability available="yes" storeId="PP1" stockCount="85"/>
       </availabilities>
       <price>2200</price>
     </offer>
@@ -10840,21 +10840,21 @@
       <price>47600</price>
     </offer>
     <offer sku="49490985">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
     <offer sku="4257950">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>0</price>
     </offer>
     <offer sku="4250670">
-      <model></model>
+      <model>nan</model>
       <availabilities>
         <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
