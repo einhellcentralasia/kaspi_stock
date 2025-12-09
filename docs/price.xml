@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-08 15:24">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-09 03:51">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -349,7 +349,7 @@
     <offer sku="4514265">
       <model>Аккум. Перфоратор SDS-Plus Einhell TP-HD 18/26 Li BL - Solo (4514265)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="46"/>
+        <availability available="yes" storeId="PP1" stockCount="45"/>
       </availabilities>
       <price>118200</price>
     </offer>
@@ -2099,7 +2099,7 @@
     <offer sku="49758941">
       <model>Диск для ламельного фрезера 100х22х4 мм, 6 зуб Einhell Milling blade 100x22x4,0mm 6T. (49758941)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="22"/>
+        <availability available="yes" storeId="PP1" stockCount="21"/>
       </availabilities>
       <price>8800</price>
     </offer>
@@ -4703,7 +4703,7 @@
     <offer sku="2351190">
       <model>Мешки для пылесоса в комплекте Einhell Synthetic dust bag 25L(5 pcs) (2351190)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="14"/>
       </availabilities>
       <price>14900</price>
     </offer>
@@ -7328,7 +7328,7 @@
     <offer sku="4500067">
       <model>Стойка для распиловки бревен Einhell Kettensägebock (4500067)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>23800</price>
     </offer>
