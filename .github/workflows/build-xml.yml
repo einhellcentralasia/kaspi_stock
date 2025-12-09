@@ -5,7 +5,6 @@ on:
     - cron: "0 3-15/2 * * 1-5"   # every 2 hours, Mon–Fri, 08:00–20:00 in UTC+5
   workflow_dispatch: {}          # keep manual trigger
 
-# ⬇️ give the token explicit write perms
 permissions:
   contents: write
 
@@ -27,46 +26,43 @@ jobs:
 
       - name: Install deps
         run: |
+          set -euo pipefail
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Sanity check env (no secret values)
         run: |
-          set -e
-          echo "LEN TENANT_ID: ${#TENANT_ID}"
-          echo "LEN CLIENT_ID: ${#CLIENT_ID}"
-          echo "LEN CLIENT_SECRET: ${#CLIENT_SECRET}"
-          [[ ${#TENANT_ID} -ge 36 ]] || (echo "TENANT_ID looks too short" && exit 1)
-          [[ ${#CLIENT_ID} -ge 36 ]] || (echo "CLIENT_ID looks too short" && exit 1)
-          [[ ${#CLIENT_SECRET} -ge 20 ]] || (echo "CLIENT_SECRET looks too short" && exit 1)
+          set -euo pipefail
+          echo "LEN COMPANY_NAME: ${#COMPANY_NAME}"
+          echo "LEN MERCHANT_ID: ${#MERCHANT_ID}"
+          echo "LEN KASPI_STORE_ID: ${#KASPI_STORE_ID}"
+          [[ ${#COMPANY_NAME} -ge 1 ]] || (echo "COMPANY_NAME missing/empty" && exit 1)
+          [[ ${#MERCHANT_ID} -ge 3 ]] || (echo "MERCHANT_ID missing/too short" && exit 1)
+          [[ ${#KASPI_STORE_ID} -ge 1 ]] || (echo "KASPI_STORE_ID missing/empty" && exit 1)
         env:
-          TENANT_ID: ${{ secrets.TENANT_ID }}
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-
-      - name: Generate XML (Graph Table API)
-        env:
-          TENANT_ID: ${{ secrets.TENANT_ID }}
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          SP_SITE_HOSTNAME: ${{ secrets.SP_SITE_HOSTNAME }}
-          SP_SITE_PATH: ${{ secrets.SP_SITE_PATH }}
-          SP_XLSX_PATH: ${{ secrets.SP_XLSX_PATH }}
-          SP_TABLE_NAME: ${{ secrets.SP_TABLE_NAME }}
           COMPANY_NAME: ${{ secrets.COMPANY_NAME }}
           MERCHANT_ID: ${{ secrets.MERCHANT_ID }}
           KASPI_STORE_ID: ${{ secrets.KASPI_STORE_ID }}
-          DEFAULT_PREORDER_DAYS: "3"
+
+      - name: Generate XML (from public SKU_updated)
+        env:
+          COMPANY_NAME: ${{ secrets.COMPANY_NAME }}
+          MERCHANT_ID: ${{ secrets.MERCHANT_ID }}
+          KASPI_STORE_ID: ${{ secrets.KASPI_STORE_ID }}
+          SKU_UPDATED_CSV_URL: "https://raw.githubusercontent.com/einhellcentralasia/ostatki/main/data/SKU_updated/SKU_updated.csv"
         run: |
+          set -euo pipefail
           python generate_xml.py
 
       - name: Commit & push if docs/price.xml changed
         run: |
+          set -euo pipefail
           if [[ -n "$(git status --porcelain docs/price.xml)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add docs/price.xml
             git commit -m "Update price.xml"
+            git pull --rebase
             git push
           else
             echo "No changes to commit."
