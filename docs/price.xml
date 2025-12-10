@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-10 11:19">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-10 13:37">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -55,7 +55,7 @@
     <offer sku="4513942">
       <model>Аккум. Ударный Шуруповерт Einhell TP-CD 18/50 Li-i BL-Solo (4513942)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="24"/>
+        <availability available="yes" storeId="PP1" stockCount="23"/>
       </availabilities>
       <price>47600</price>
     </offer>
@@ -286,7 +286,7 @@
     <offer sku="4512042">
       <model>Зарядное устройство в комплекте Einhell 18V 4,0Ah PXC Starter Kit 1 (4512042)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="198"/>
+        <availability available="yes" storeId="PP1" stockCount="193"/>
       </availabilities>
       <price>23400</price>
     </offer>
@@ -496,7 +496,7 @@
     <offer sku="4513997">
       <model>Аккум. Шуруповерт Einhell TE-CD 18/40 Li BL - Solo (4513997)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="31"/>
+        <availability available="yes" storeId="PP1" stockCount="30"/>
       </availabilities>
       <price>39000</price>
     </offer>
@@ -650,7 +650,7 @@
     <offer sku="4514220">
       <model>Аккум. Ударный Шуруповерт Einhell TE-CD 18/2 Li-i +22 (1x2,5 Ah) (4514220)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="166"/>
+        <availability available="yes" storeId="PP1" stockCount="155"/>
       </availabilities>
       <price>69900</price>
     </offer>
@@ -762,7 +762,7 @@
     <offer sku="4331207">
       <model>Аккум. Циркулярная пила Einhell TE-CS 18/165-1 Li - Solo (4331207)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="yes" storeId="PP1" stockCount="4"/>
       </availabilities>
       <price>67900</price>
     </offer>
@@ -1231,7 +1231,7 @@
     <offer sku="2347120">
       <model>Аккум. Пылесос Einhell TE-VC 18 Li-Solo (2347120)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="6"/>
+        <availability available="yes" storeId="PP1" stockCount="5"/>
       </availabilities>
       <price>32900</price>
     </offer>
@@ -1938,7 +1938,7 @@
     <offer sku="4513442">
       <model>Аккум. Шуруповерт Einhell TC-SD 3,6 Li (4513442)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="245"/>
+        <availability available="yes" storeId="PP1" stockCount="235"/>
       </availabilities>
       <price>14900</price>
     </offer>
@@ -4549,7 +4549,7 @@
     <offer sku="2342460">
       <model>Сетев. Пылесос Einhell TE-VC 2025 SACL (2342460)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="52"/>
+        <availability available="yes" storeId="PP1" stockCount="51"/>
       </availabilities>
       <price>115600</price>
     </offer>
@@ -8378,7 +8378,7 @@
     <offer sku="4514148">
       <model>USB-адаптер Einhell TC-CP 18 Li USB A/C-Solo (4514148)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="58"/>
+        <availability available="yes" storeId="PP1" stockCount="56"/>
       </availabilities>
       <price>13100</price>
     </offer>
