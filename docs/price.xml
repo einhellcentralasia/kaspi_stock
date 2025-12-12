@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-12 09:26">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-12 11:20">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -230,7 +230,7 @@
     <offer sku="4419169">
       <model>Сетев. Гравер Einhell TC-MG 135 E (4419169)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="22"/>
+        <availability available="yes" storeId="PP1" stockCount="21"/>
       </availabilities>
       <price>29800</price>
     </offer>
@@ -2722,7 +2722,7 @@
     <offer sku="4530074">
       <model>Сумка для инструментов Einhell Einhell Bag 45/29 (4530074)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="162"/>
+        <availability available="yes" storeId="PP1" stockCount="161"/>
       </availabilities>
       <price>19000</price>
     </offer>
@@ -2890,7 +2890,7 @@
     <offer sku="4300805">
       <model>Сетев. Торцовочная пила Einhell TC-SM 2531/2 U (4300805)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>136000</price>
     </offer>
@@ -2918,7 +2918,7 @@
     <offer sku="4300877">
       <model>Сетев. Торцовочная пила Einhell TE-SM 10 L Dual (4300877)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="3"/>
+        <availability available="yes" storeId="PP1" stockCount="2"/>
       </availabilities>
       <price>175600</price>
     </offer>
@@ -6173,7 +6173,7 @@
     <offer sku="3425240">
       <model>Аккум. Распылитель Einhell GE-WS 18/10 Li-Solo (3425240)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="11"/>
+        <availability available="yes" storeId="PP1" stockCount="10"/>
       </availabilities>
       <price>37400</price>
     </offer>
@@ -8868,7 +8868,7 @@
     <offer sku="67450">
       <model>Строительный угольник, 500 мм, Pro kwb by Einhell (67450)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="5"/>
+        <availability available="yes" storeId="PP1" stockCount="4"/>
       </availabilities>
       <price>11500</price>
     </offer>
@@ -8882,7 +8882,7 @@
     <offer sku="89510">
       <model>Стальная вата, 200 г, средняя, номер 01 kwb by Einhell (89510)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="1"/>
+        <availability available="no" storeId="PP1" stockCount="0"/>
       </availabilities>
       <price>3700</price>
     </offer>
@@ -9456,7 +9456,7 @@
     <offer sku="292500">
       <model>Патрон для сверла HEX, 6,5 мм, 1/4'' kwb by Einhell (292500)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="4"/>
+        <availability available="yes" storeId="PP1" stockCount="3"/>
       </availabilities>
       <price>3400</price>
     </offer>
@@ -10009,7 +10009,7 @@
     <offer sku="530300">
       <model>Набор глубиномеров, 3 шт., в упаковке kwb by Einhell (530300)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="9"/>
+        <availability available="yes" storeId="PP1" stockCount="8"/>
       </availabilities>
       <price>1900</price>
     </offer>
@@ -10695,7 +10695,7 @@
     <offer sku="784800">
       <model>Набор ручек и маркеров для сверления kwb by Einhell (784800)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="2"/>
+        <availability available="yes" storeId="PP1" stockCount="1"/>
       </availabilities>
       <price>5500</price>
     </offer>
