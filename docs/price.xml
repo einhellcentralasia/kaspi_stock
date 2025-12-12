@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-12 11:20">
+<kaspi_catalog xmlns="kaspiShopping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="kaspiShopping http://kaspi.kz/kaspishopping.xsd" date="2025-12-12 13:34">
   <company>Einhell</company>
   <merchantid>30245761</merchantid>
   <offers>
@@ -76,7 +76,7 @@
     <offer sku="4321209">
       <model>Аккум. Лобзик Einhell TC-JS 18 Li - Solo (4321209)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="46"/>
+        <availability available="yes" storeId="PP1" stockCount="45"/>
       </availabilities>
       <price>29200</price>
     </offer>
@@ -342,7 +342,7 @@
     <offer sku="4514260">
       <model>Аккум. Перфоратор SDS-Plus Einhell TE-HD 18/20 Li - Solo (4514260)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="47"/>
+        <availability available="yes" storeId="PP1" stockCount="46"/>
       </availabilities>
       <price>88400</price>
     </offer>
@@ -398,7 +398,7 @@
     <offer sku="4431140">
       <model>Аккум. Углошлифмашина Einhell AXXIO 18/125 - Solo (4431140)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="134"/>
+        <availability available="yes" storeId="PP1" stockCount="133"/>
       </availabilities>
       <price>60200</price>
     </offer>
@@ -615,7 +615,7 @@
     <offer sku="4514310">
       <model>Аккум. Ударный Шуруповерт Einhell TP-CD 18/120 Li-i BL - Solo (4514310)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="94"/>
+        <availability available="yes" storeId="PP1" stockCount="93"/>
       </availabilities>
       <price>99900</price>
     </offer>
@@ -706,7 +706,7 @@
     <offer sku="4461000">
       <model>Аккум. Ленточная шлифмашина Einhell TE-BF 18 Li-solo (4461000)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="55"/>
+        <availability available="yes" storeId="PP1" stockCount="54"/>
       </availabilities>
       <price>71400</price>
     </offer>
@@ -783,7 +783,7 @@
     <offer sku="4321200">
       <model>Аккум. Лобзик Einhell TE-JS 18/80 Li-Solo (4321200)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="51"/>
+        <availability available="yes" storeId="PP1" stockCount="50"/>
       </availabilities>
       <price>42800</price>
     </offer>
@@ -874,7 +874,7 @@
     <offer sku="4460730">
       <model>Аккум. Мультишлифмашина Einhell TE-OS 18/113 3X Li - Solo (4460730)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="11"/>
+        <availability available="yes" storeId="PP1" stockCount="10"/>
       </availabilities>
       <price>64600</price>
     </offer>
@@ -895,7 +895,7 @@
     <offer sku="4260040">
       <model>Аккум. Краскопульт Einhell TE-SY 18/90 Li-Solo (4260040)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="19"/>
+        <availability available="yes" storeId="PP1" stockCount="18"/>
       </availabilities>
       <price>81600</price>
     </offer>
@@ -937,7 +937,7 @@
     <offer sku="4514175">
       <model>Аккум. Фонарь Einhell TC-CL 18/350 Li - Solo (4514175)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="29"/>
+        <availability available="yes" storeId="PP1" stockCount="28"/>
       </availabilities>
       <price>19900</price>
     </offer>
@@ -972,7 +972,7 @@
     <offer sku="4522200">
       <model>Аккум. Клеевой пистолет Einhell TE-CG 18 Li - Solo (4522200)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="23"/>
+        <availability available="yes" storeId="PP1" stockCount="22"/>
       </availabilities>
       <price>25800</price>
     </offer>
@@ -1196,7 +1196,7 @@
     <offer sku="3437101">
       <model>Телескопический набор BRILLIANTO Einhell Teleskopstangenset BRILLIANTO (3437101)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="15"/>
+        <availability available="yes" storeId="PP1" stockCount="14"/>
       </availabilities>
       <price>37400</price>
     </offer>
@@ -5949,7 +5949,7 @@
     <offer sku="3433620">
       <model>Аккум. Воздуходувка Einhell GP-LB 36/210 Li E-Solo (3433620)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="28"/>
+        <availability available="yes" storeId="PP1" stockCount="27"/>
       </availabilities>
       <price>95200</price>
     </offer>
@@ -8343,7 +8343,7 @@
     <offer sku="4350800">
       <model>Аккум. Штроборез Einhell TP-MA 36/30 Li BL - Solo (4350800)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="12"/>
+        <availability available="yes" storeId="PP1" stockCount="11"/>
       </availabilities>
       <price>178900</price>
     </offer>
@@ -8357,7 +8357,7 @@
     <offer sku="4419925">
       <model>Сетев. Рейсмусовый станок Einhell TE-SP 330 (4419925)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="13"/>
+        <availability available="yes" storeId="PP1" stockCount="12"/>
       </availabilities>
       <price>340800</price>
     </offer>
@@ -8385,7 +8385,7 @@
     <offer sku="4514180">
       <model>Аккум. Фонарь Einhell TE-CL 18/1000 S Li - Solo (4514180)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="22"/>
+        <availability available="yes" storeId="PP1" stockCount="21"/>
       </availabilities>
       <price>36700</price>
     </offer>
@@ -8630,7 +8630,7 @@
     <offer sku="4432000">
       <model>Аккум. Отрезная машина Einhell TP-CO 18/76-C Li BL - Solo (4432000)</model>
       <availabilities>
-        <availability available="yes" storeId="PP1" stockCount="27"/>
+        <availability available="yes" storeId="PP1" stockCount="26"/>
       </availabilities>
       <price>65000</price>
     </offer>
